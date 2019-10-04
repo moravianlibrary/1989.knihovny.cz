@@ -1,0 +1,5 @@
+{
+    "require": {
+        "nette/sandbox": "^3.0"
+    }
+}

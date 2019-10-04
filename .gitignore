@@ -1,0 +1,6 @@
+app/config/local.neon
+log/
+temp/
+vendor/
+node_modules/
+files_src/navrh/
