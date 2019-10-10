@@ -1,13 +1,183 @@
+@import "bootstrap";
+@import "var";
 
-.carousel{
-  .carousel-inner{
-    .carousel-item{
-      &.active{
+html {
+  font-size: 14px;
 
+  a {
+
+    &, &:visited {
+      color: orangered;
+      text-decoration: none;
+    }
+
+    &:hover, &:active {
+      color: orange;
+    }
+  }
+}
+
+header {
+  overflow: hidden;
+  background: $color-bg-head;
+  @include media-breakpoint-up(lg) {
+    height: $height-header;
+  }
+
+  .row.header {
+    @include media-breakpoint-up(lg) {
+      height: $height-header;
+    }
+  }
+
+  .carousel {
+    padding: 0;
+    @include media-breakpoint-up(lg) {
+      position: absolute;
+      right: 0;
+    }
+
+    .carousel-inner {
+      overflow: hidden;
+      @include media-breakpoint-up(lg) {
+        height: $height-header;
+        border-radius: 15%/50% 0 0 50%;
       }
-      img{
 
+      .carousel-item {
+        &.active {
+
+        }
+
+        img {
+          @include media-breakpoint-up(lg) {
+            min-height: $height-header;
+          }
+          width: 100%;
+        }
       }
     }
+  }
+
+  .titletext {
+    padding: 2.5em;
+
+    h1 {
+      border-bottom: 1px solid #d6d6d6;
+      padding: .1em;
+
+      span {
+        color: gray;
+        font-style: italic;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      margin: 16em 0;
+      padding: 2em;
+      font-size: 140%;
+    }
+    @include media-breakpoint-up(xl) {
+      margin: 13em 0;
+      padding: 3em 4em;
+    }
+  }
+}
+
+main {
+  .shorttext {
+    h2 {
+      text-align: center;
+    }
+
+    font-size: 1.2em;
+    margin: 2em 1em;
+    text-align: justify;
+    justify-content: left;
+  }
+
+  .bookshelf {
+    margin: 1em auto;
+    padding: 5px;
+
+    .item {
+      a {
+        padding: .25em;
+        margin: .25em;
+        background: #f8f9fa;
+        border: 1px solid #dde3e9;
+        border-radius: 3px;
+        color: inherit;
+
+        &:hover {
+          background: #eff7ff;
+          border-color: #a6bfd8;
+        }
+
+        img.cover {
+          width: 100px;
+          margin-right: 5px;
+        }
+
+        .media-body {
+          padding: 1em .5em;
+
+          .title {
+            font-weight: bold;
+          }
+
+          .author {
+            color: $color-lighter;
+          }
+        }
+      }
+    }
+  }
+
+  .people {
+    .item {
+      img {
+        width: 150px;
+      }
+
+      .details {
+        display: inline-block;
+        padding: 5px 1em;
+        margin: 0 0 10px 1.5em;
+
+        .name {
+          font-size: 115%;
+        }
+
+        .date {
+          color: $color-lighter;
+        }
+      }
+    }
+
+    .person_detail .media {
+      width: 600px;
+      margin: 10px auto;
+
+      img {
+        width: 200px;
+      }
+
+      .media-body {
+        padding: 2em 1em;
+      }
+    }
+  }
+
+}
+
+footer {
+  margin: 2em 0 0;
+  background: black;
+
+  div.container {
+    color: whitesmoke;
+    padding: 1em;
+    text-align: center;
   }
 }
