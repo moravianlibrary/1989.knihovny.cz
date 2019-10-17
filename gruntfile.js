@@ -17,7 +17,10 @@ module.exports = function (grunt) {
         uglify: {
             ugly: {
                 files: {
-                    'www/files/script/page.js': ['']
+                    'www/files/script/jquery.js': [
+                        'node_modules/jquery/dist/jquery.min.js',
+                        'node_modules/owl-carousel/.js'
+                    ]
                 }
             }
         }

@@ -1,9 +1,34 @@
 {block content}
 
-<div class="row">
-    <div class="col-md-12">
-        <div class="row bookshelf" n:if="count($books) > 0">
-            <div class="col-sm-6 col-lg-4 col-xl-3 item" n:foreach="$books as $book">
+
+{foreach [none, dark] as $item}
+<div class="row people" n:if="count($people) > 0">
+    <div class="col-sm-12 col-md-6 person_detail">
+    <h2 class="d-block">Osobnosti revoluce</h2>
+        <div class="ppl {$item}">
+            <div class="media" target="_blank" href="https://www.knihovny.cz/Record/">
+                <img class="profile" src="{$people[0]['img']}" alt="Osoba">
+                <div class="media-body">
+                    <div class="title">
+                        <h5 class="name">{$people[0]['name']}</h5>
+                        <h6 class="date">{$people[0]['job']}, {$people[0]['years']}</h6>
+                    </div>
+                    <p>{$people[0]['desc']}</p>
+                </div>
+            </div>
+            <ul class="ppl-list">
+                <li class="item" n:foreach="$people as $person">
+                    <img class="avatar rounded-circle" src="{$person['img']}">
+                    <div class="details">
+                        <h5 class="name">{$person['name']}</h5>
+                        <h6 class="date">{$person['years']}</h6>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+        <div class="bookshelf col-md-6 row" n:if="count($books) > 0">
+            <div class="col-sm-6 item" n:foreach="$books as $book">
                 <a class="media" target="_blank" href="https://www.knihovny.cz/Record/{$book['record']}">
                   <img class="cover" src="{$book['img']}" alt="Obálka knihy {$book['title']}">
                   <div class="media-body">
@@ -13,26 +38,20 @@
                 </a>
             </div>
         </div>
-    </div>
 </div>
-<div class="row people" n:if="count($people) > 0">
-    <div class="col-sm-3 col-md-2 item" n:foreach="$people as $person">
-        <img class="avatar rounded-circle" src="{$person['img']}">
-        <div class="details">
-            <h5 class="name">{$person['name']}</h5>
-            <h6 class="date">{$person['years']}</h6>
+{/foreach}
+<div class="row">
+    <div class="col-lg-6 video-block">
+        {block video-block}
+        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fressources.blogdumoderateur.com%2F2016%2F09%2Fyoutube-1.jpg&f=1&nofb=1">
+        <div class="content">
+            <h3>Lorem ipsum</h3>
+            <p class="author">Zdroj: Česká Televize</p>
+            <p>Vivamus metus urna, fringilla vitae lorem quis, mollis dapibus mauris. Vivamus et leo urna. Sed et varius tortor. Ut eu odio justo. Maecenas ex mi, laoreet at imperdiet a, laoreet eu orci. Nam cursus rhoncus leo vel commodo. Nullam sodales viverra tortor, et ultricies libero porta elementum.</p>
         </div>
+        {/block}
     </div>
-    <div class="col-sm-12 person_detail" id="person_detail">
-        <div class="media" target="_blank" href="https://www.knihovny.cz/Record/">
-            <img class="mr-3" src="{$people[0]['img']}" alt="Osoba">
-            <div class="media-body">
-                <h5 class="mt-0">{$people[0]['name']}</h5>
-                <h6 class="author">{$people[0]['years']}</h6>
-                <p>{$people[0]['desc']}</p>
-            </div>
-        </div>
-    </div>
+    <div n:foreach="[a,b,c,d,e,f] as $l" class="col-sm-6 col-lg-3 video-block">{include video-block}</div>
 </div>
 <div class="row">
     <div class="col-12">
@@ -48,3 +67,4 @@
         </ul>
     </div>
 </div>
+<button type="button" class="btn btn-secondary single">Vyzkoušejte své znalosti v krátkém kvízu.</button>

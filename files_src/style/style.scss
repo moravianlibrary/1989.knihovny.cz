@@ -15,6 +15,16 @@ html {
       color: orange;
     }
   }
+
+  .btn.single {
+    display: block;
+    margin: 0px auto;
+    font-size: 2em;
+  }
+
+  p {
+    margin-bottom: 0;
+  }
 }
 
 header {
@@ -73,18 +83,26 @@ header {
     }
 
     @include media-breakpoint-up(lg) {
-      margin: 16em 0;
+      margin: 12em 0;
       padding: 2em;
       font-size: 140%;
     }
     @include media-breakpoint-up(xl) {
-      margin: 13em 0;
-      padding: 3em 4em;
+      margin: 9em 0;
+      padding: 2em 4em;
     }
   }
 }
 
 main {
+  &.container {
+    padding-top: 2em;
+    .row {
+      border-bottom: 1px solid lightgray;
+      margin-bottom: 2em;
+    }
+  }
+
   .shorttext {
     h2 {
       text-align: center;
@@ -135,36 +153,119 @@ main {
   }
 
   .people {
-    .item {
-      img {
-        width: 150px;
-      }
+    .ppl {
+      margin: 0;
+      padding: .5em;
+      border: 1px double #DDD;
+      border-radius: 3px;
 
-      .details {
-        display: inline-block;
-        padding: 5px 1em;
-        margin: 0 0 10px 1.5em;
+      &.dark {
+        background: black;
+        color: whitesmoke;
+        border: none;
 
-        .name {
-          font-size: 115%;
+        h6.date {
+          color: #DDD;
         }
 
-        .date {
-          color: $color-lighter;
+        .media {
+          border-color: #555;
+        }
+      }
+
+      h5.name {
+        white-space: nowrap;
+        margin: 0;
+        border: none;
+      }
+
+      h6.date {
+        white-space: nowrap;
+        font-size: 90%;
+        color: #4C4C4C;
+      }
+
+      .media {
+        margin-bottom: .5em;
+        border-bottom: 1px solid gray;
+
+        .media-body {
+          padding: .25em .5em;
+
+          p {
+            margin: 0;
+          }
+
+          .title {
+            margin-left: 0.5em;
+
+            .name {
+              font-size: 1.7em;
+            }
+          }
+
+          img {
+            width: 200px;
+            float: left;
+          }
+        }
+      }
+
+      ul.ppl-list {
+        list-style-type: none;
+        text-align: center;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        white-space: nowrap;
+
+        li {
+          display: inline-block;
+          padding: 0 4px;
+
+          img.avatar {
+            width: 80px;
+          }
+        }
+      }
+
+      @include media-breakpoint-down(md) {
+        margin: .5em auto;
+        .media {
+          img.profile {
+            margin-top: .5em;
+          }
+
+          .media-body {
+            padding: .25em;
+          }
         }
       }
     }
+  }
 
-    .person_detail .media {
-      width: 600px;
-      margin: 10px auto;
+  .video-block {
+    padding: 1em;
+    border-radius: 5px;
 
-      img {
-        width: 200px;
+    &:hover, &.active {
+      background: #EEE;
+    }
+
+    img {
+      width: 100%;
+    }
+
+    .content {
+      padding: .5em;
+
+      h3 {
+        font-weight: bold;
+        margin-bottom: 0;
       }
 
-      .media-body {
-        padding: 2em 1em;
+      .author {
+        font-style: italic;
       }
     }
   }

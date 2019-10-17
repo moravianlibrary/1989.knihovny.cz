@@ -4,7 +4,6 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
 
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="files/style/style.css">
 
 	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Web</title>
@@ -13,23 +12,41 @@
 <body>
 <header class='container-fluid no-padd'>
     <div class="row header flex-lg-column-reverse">
-        <div class='carousel col-lg-6 slide' id="carouselExampleControls" data-ride='carousel'>
-            <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img class="d-block" src="/files/img/a01.png" alt="First slide">
-                </div>
-                <div class="carousel-item">
-                    <img class="d-block" src="/files/img/a02.png" alt="Second slide">
-                </div>
-            </div>
-        </div>
+        {$carousel|noescape}
         <div class="col-lg-6 titletext">
-{*            <pre>{$carousel}</pre>*}
             <h1>Sametová revoluce <span>(1989)</span></h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rhoncus nisi at libero ornare convallis. Nullam turpis quam, elementum aliquet massa quis, cursus lacinia nibh. Proin ultricies commodo dolor non tincidunt. Suspendisse vitae pharetra diam. Donec et lorem molestie, rhoncus urna id, fermentum eros. Vestibulum pharetra velit sed urna volutpat, ac sagittis turpis volutpat. Morbi accumsan blandit urna et commodo. In ut viverra arcu. Duis augue lectus, aliquam vitae dignissim et, ornare ac lectus. Donec in tincidunt purus, eu tincidunt mauris. Nunc scelerisque auctor magna et ornare. Aenean ut tempor nisl. Maecenas viverra sed mauris sed lacinia. Quisque pretium ante ut tellus ultricies, non tincidunt lorem laoreet. Vestibulum nec dignissim eros, ac tincidunt erat. Cras sed lacus eget est aliquam hendrerit.</p>
         </div>
     </div>
 </header>
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger sticky-top">
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="container collapse navbar-collapse" id="navbarSupportedContent">
+    <a class="navbar-brand" href="#">Navbar</a>
+    <ul class="navbar-nav">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Úvod<span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Zdroje</a>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Osobnosti</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Další odkazy</a>
+      </li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+        <a class="btn btn-secondary btn-large">Otestujte své znalosti v krátkém kvízu</a>
+    </div>
+  </div>
+</nav>
+
 <main class='container'>
 {include content}
 </main>
@@ -41,9 +58,16 @@
 </footer>
 
 {block scripts}
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <script src="/files/script/page.js" type="text/javascript"></script>
 {/block}
 </body>
 </html>
