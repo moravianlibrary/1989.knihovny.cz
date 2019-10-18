@@ -1,10 +1,7 @@
 {block content}
-
-
-{foreach [none, dark] as $item}
-<div class="row people" n:if="count($people) > 0">
+<div class="row people" n:if="count($people) > 0" n:foreach="[none, dark] as $item">
+    <h2 class="main" n:if="$iterator->first">Osobnosti revoluce</h2>
     <div class="col-sm-12 col-md-6 person_detail">
-    <h2 class="d-block">Osobnosti revoluce</h2>
         <div class="ppl {$item}">
             <div class="media" target="_blank" href="https://www.knihovny.cz/Record/">
                 <img class="profile" src="{$people[0]['img']}" alt="Osoba">
@@ -29,6 +26,7 @@
     </div>
         <div class="bookshelf col-md-6 row" n:if="count($books) > 0">
             <div class="col-sm-6 item" n:foreach="$books as $book">
+                {continueIf $iterator->counter > 4}
                 <a class="media" target="_blank" href="https://www.knihovny.cz/Record/{$book['record']}">
                   <img class="cover" src="{$book['img']}" alt="Obálka knihy {$book['title']}">
                   <div class="media-body">
@@ -39,12 +37,12 @@
             </div>
         </div>
 </div>
-{/foreach}
 <div class="row">
+    <h2 class="main">Videa a filmy</h2>
     <div class="col-lg-6 video-block">
         {block video-block}
-        <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fressources.blogdumoderateur.com%2F2016%2F09%2Fyoutube-1.jpg&f=1&nofb=1">
-        <div class="content">
+            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fressources.blogdumoderateur.com%2F2016%2F09%2Fyoutube-1.jpg&f=1&nofb=1">
+            <div class="content">
             <h3>Lorem ipsum</h3>
             <p class="author">Zdroj: Česká Televize</p>
             <p>Vivamus metus urna, fringilla vitae lorem quis, mollis dapibus mauris. Vivamus et leo urna. Sed et varius tortor. Ut eu odio justo. Maecenas ex mi, laoreet at imperdiet a, laoreet eu orci. Nam cursus rhoncus leo vel commodo. Nullam sodales viverra tortor, et ultricies libero porta elementum.</p>
@@ -54,17 +52,25 @@
     <div n:foreach="[a,b,c,d,e,f] as $l" class="col-sm-6 col-lg-3 video-block">{include video-block}</div>
 </div>
 <div class="row">
-    <div class="col-12">
-        <ul>
-            <div class="col-md-12">
-                <div class="shorttext d-block">
-                    <h2>Další zdroje</h2>
-                    <ul>
-                        <li n:foreach="[odkaz, odkaz2, odkaz3] as $link"><a href="#{$link}">{$link}</a></li>
-                    </ul>
-                </div>
+    <h2 class="main">Další zdroje</h2>
+    <ul class="col-12 col-md-6 col-lg-4" n:foreach="[1,2,3] as $i">
+        <div class="shorttext d-block">
+            <ul>
+                <li n:foreach="range('A', 'F') as $link"><a href="#{$link}">{$link}</a></li>
+            </ul>
+        </div>
+    </ul>
+</div>
+<div class="bookshelf row" n:if="count($books) > 0">
+            <div class="col-sm-6 col-md-4 col-lg-3 item" n:foreach="$books as $book">
+                {continueIf $iterator->counter > 4}
+                <a class="media" target="_blank" href="https://www.knihovny.cz/Record/{$book['record']}">
+                  <img class="cover" src="{$book['img']}" alt="Obálka knihy {$book['title']}">
+                  <div class="media-body">
+                    <h5 class="title">{$book['title']}</h5>
+                    <h6 class="author">{$book['author']}</h6>
+                  </div>
+                </a>
             </div>
-        </ul>
-    </div>
 </div>
 <button type="button" class="btn btn-secondary single">Vyzkoušejte své znalosti v krátkém kvízu.</button>

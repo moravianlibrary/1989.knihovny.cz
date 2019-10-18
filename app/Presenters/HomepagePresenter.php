@@ -18,11 +18,19 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
             'id' => 'carouselExampleControls'
         ]))->add_slide([
             'class' => 'active',
-            'img' => [ 'src' => '/files/img/a01.png', 'alt' => 'First slide' ],
+            'img' => [ 'src' => '/files/img/foto/a0004.png', 'alt' => 'Fourth slide' ]
         ])->add_slide([
-            'img' => [ 'src' => '/files/img/a02.png', 'alt' => 'Second slide' ],
+            'img' => [ 'src' => '/files/img/foto/a0005.png', 'alt' => 'Fifth slide' ]
         ])->add_slide([
-            'img' => [ 'src' => '/files/img/a03.png', 'alt' => 'Third slide' ]
+            'img' => [ 'src' => '/files/img/foto/a0001.png', 'alt' => 'First slide' ]
+        ])->add_slide([
+            'img' => [ 'src' => '/files/img/foto/a0002.png', 'alt' => 'Second slide' ]
+        ])->add_slide([
+            'img' => [ 'src' => '/files/img/foto/a0003.png', 'alt' => 'Third slide' ]
+        ])->add_slide([
+            'img' => [ 'src' => '/files/img/foto/a0006.png', 'alt' => 'Third slide' ]
+        ])->add_slide([
+            'img' => [ 'src' => '/files/img/foto/a0007.png', 'alt' => 'Third slide' ]
         ])
             ->render();
 
@@ -58,9 +66,7 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
                 'name' => 'Jan Novák',
                 'job' => 'Iniciátor',
                 'years' => '1942-1942',
-                'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor sem eget sollicitudin pellentesque. Fusce eget nibh tincidunt lacus pretium consequat a eu sapien.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor sem eget sollicitudin pellentesque. Fusce eget nibh tincidunt lacus pretium consequat a eu sapien.
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor sem eget sollicitudin pellentesque. Fusce eget nibh tincidunt lacus pretium consequat a eu sapien.'
+                'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor sem eget sollicitudin pellentesque. Fusce eget nibh tincidunt lacus pretium consequat a eu sapien.'
             ]
         ];
 

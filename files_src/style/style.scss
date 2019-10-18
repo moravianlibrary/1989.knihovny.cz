@@ -97,9 +97,18 @@ header {
 main {
   &.container {
     padding-top: 2em;
-    .row {
-      border-bottom: 1px solid lightgray;
+
+    > .row {
       margin-bottom: 2em;
+
+      h1, h2, h3 {
+        display: block;
+        width: 100%;
+        border-bottom: 1px solid lightgray;
+        &.main{
+          text-align: center;
+        }
+      }
     }
   }
 
@@ -115,8 +124,7 @@ main {
   }
 
   .bookshelf {
-    margin: 1em auto;
-    padding: 5px;
+    padding: 10px;
 
     .item {
       a {
@@ -138,7 +146,7 @@ main {
         }
 
         .media-body {
-          padding: 1em .5em;
+          padding: .5em;
 
           .title {
             font-weight: bold;
@@ -245,7 +253,8 @@ main {
   }
 
   .video-block {
-    padding: 1em;
+    padding: .5em;
+    margin: .5em 0;
     border-radius: 5px;
 
     &:hover, &.active {
