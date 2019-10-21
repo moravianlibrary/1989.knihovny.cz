@@ -19,7 +19,8 @@ module.exports = function (grunt) {
                 files: {
                     'www/files/script/jquery.js': [
                         'node_modules/jquery/dist/jquery.min.js',
-                        'node_modules/owl-carousel/.js'
+                        'node_modules/tiny-slider/tiny-slider.js',
+                        'files_src/script/page.js'
                     ]
                 }
             }

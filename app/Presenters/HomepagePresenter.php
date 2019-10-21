@@ -14,7 +14,7 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
     function renderDefault() {
 
         $this->template->carousel = (new Carousel([
-            'class' => 'slide col-lg-6',
+            'class' => 'slide carousel-fade col-lg-6',
             'id' => 'carouselExampleControls'
         ]))->add_slide([
             'class' => 'active',
@@ -31,8 +31,7 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
             'img' => [ 'src' => '/files/img/foto/a0006.png', 'alt' => 'Third slide' ]
         ])->add_slide([
             'img' => [ 'src' => '/files/img/foto/a0007.png', 'alt' => 'Third slide' ]
-        ])
-            ->render();
+        ])->render();
 
         $books = [
             [
@@ -58,6 +57,41 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
         $books = array_merge($books, $books);
         shuffle($books);
         $this->template->books = $books;
+
+        $this->template->periodicals_home = '/files/img/obalky';
+        $this->template->periodicals = [
+            [
+                'title' => 'Rudé právo',
+                'year' => '11/1989',
+                'dir' => 'Rude_pravo11',
+                'cover' => 'UC_2e24be91-9d63-11e3-8e84-005056827e51_0001.jpg'
+            ], [
+                'title' => 'Rudé právo',
+                'year' => '12/1989',
+                'dir' => 'Rude_pravo12',
+                'cover' => 'UC_1e662d00-985d-11e3-ad99-001018b5eb5c_0001.jpg'
+            ], [
+                'title' => 'Studentské listy',
+                'year' => '1/1990',
+                'dir' => 'Studentske_listy',
+                'cover' => 'UC_1eeee350-530d-11e4-90c9-005056825209_0001.jpg'
+            ], [
+                'title' => 'Tribuna',
+                'year' => '11-12/1990',
+                'dir' => 'Tribuna',
+                'cover' => 'uc_02a906c0-bd17-11e9-b601-005056825209_0001.jpg'
+            ], [
+                'title' => 'Mladý svět',
+                'year' => '1989',
+                'dir' => 'Mlady_svet',
+                'cover' => 'UC_4eff0740-3054-11e4-8e0d-005056827e51_0001.jpg'
+            ], [
+                'title' => 'Duha',
+                'year' => '1989/90',
+                'dir' => 'Duha',
+                'cover' => 'ABA000_0001028963198940002.jpg'
+            ]
+        ];
 
 
         $people = [

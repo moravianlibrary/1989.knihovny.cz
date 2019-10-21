@@ -51,7 +51,7 @@ header {
       overflow: hidden;
       @include media-breakpoint-up(lg) {
         height: $height-header;
-        border-radius: 15%/50% 0 0 50%;
+        border-radius: 5%/50% 0 0 50%;
       }
 
       .carousel-item {
@@ -73,14 +73,35 @@ header {
     padding: 2.5em;
 
     h1 {
-      border-bottom: 1px solid #d6d6d6;
       padding: .1em;
+      margin: .5em auto;
+      color: gray;
+      border-bottom: 1px solid #d6d6d6;
 
       span {
-        color: gray;
         font-style: italic;
       }
+
+      p {
+        font-size: 150%;
+        color: black;
+        text-transform: uppercase;
+        font-weight: bold;
+      }
     }
+
+    .text {
+      p {
+        margin: .25em;
+        text-align: justify;
+
+        &.important {
+          font-size: 105%;
+          font-weight: bold;
+        }
+      }
+    }
+
 
     @include media-breakpoint-up(lg) {
       margin: 12em 0;
@@ -105,7 +126,8 @@ main {
         display: block;
         width: 100%;
         border-bottom: 1px solid lightgray;
-        &.main{
+
+        &.main {
           text-align: center;
         }
       }
@@ -166,6 +188,10 @@ main {
       padding: .5em;
       border: 1px double #DDD;
       border-radius: 3px;
+
+      .tns-nav {
+        display: none;
+      }
 
       &.dark {
         background: black;
@@ -275,6 +301,19 @@ main {
 
       .author {
         font-style: italic;
+      }
+    }
+  }
+
+  .periodicals {
+    .item {
+      .cover {
+        height: 250px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+        }
       }
     }
   }

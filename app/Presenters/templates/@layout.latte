@@ -5,6 +5,7 @@
 	<meta name="viewport" content="width=device-width">
 
     <link rel="stylesheet" type="text/css" href="files/style/style.css">
+    <!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.helper.ie8.js"></script><![endif]-->
 
 	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Web</title>
 </head>
@@ -14,8 +15,11 @@
     <div class="row header flex-lg-column-reverse">
         {$carousel|noescape}
         <div class="col-lg-6 titletext">
-            <h1>Sametová revoluce <span>(1989)</span></h1>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla rhoncus nisi at libero ornare convallis. Nullam turpis quam, elementum aliquet massa quis, cursus lacinia nibh. Proin ultricies commodo dolor non tincidunt. Suspendisse vitae pharetra diam. Donec et lorem molestie, rhoncus urna id, fermentum eros. Vestibulum pharetra velit sed urna volutpat, ac sagittis turpis volutpat. Morbi accumsan blandit urna et commodo. In ut viverra arcu. Duis augue lectus, aliquam vitae dignissim et, ornare ac lectus. Donec in tincidunt purus, eu tincidunt mauris. Nunc scelerisque auctor magna et ornare. Aenean ut tempor nisl. Maecenas viverra sed mauris sed lacinia. Quisque pretium ante ut tellus ultricies, non tincidunt lorem laoreet. Vestibulum nec dignissim eros, ac tincidunt erat. Cras sed lacus eget est aliquam hendrerit.</p>
+            <h1>Sametová revoluce <span>(1989)</span><p>V knihovnách</p></h1>
+            <div class="text">
+                <p>Sametová revoluce je označení období politických změn v Československu mezi 17. listopadem a 29. prosincem roku 1989, které vedly k pádu komunistického režimu a přeměně politického zřízení na pluralitní demokracii.</p>
+                <p class="important">Podívejte se, co o 17. listopadu 1989 najdete v knihovnách a jejich fyzických i elektronických fondech.</p>
+            </div>
         </div>
     </div>
 </header>
@@ -63,7 +67,23 @@
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.js"></script>
     <script src="/files/script/page.js" type="text/javascript"></script>
+    <script>
+        var config = {
+            "container": "#list1",
+            "items": 5,
+            "controls": false,
+            "pagination": false,
+            "slideBy": 1,
+            "mouseDrag": true,
+            "swipeAngle": false,
+            "speed": 400
+        };
+        tns(config);
+        config.container = "#list";
+        tns(config);
+    </script>
 {/block}
 </body>
 </html>
