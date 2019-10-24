@@ -17,7 +17,7 @@ module.exports = function (grunt) {
         uglify: {
             ugly: {
                 files: {
-                    'www/files/script/jquery.js': [
+                    'www/files/script/page.js': [
                         'node_modules/jquery/dist/jquery.min.js',
                         'node_modules/tiny-slider/tiny-slider.js',
                         'files_src/script/page.js'

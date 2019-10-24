@@ -6,10 +6,14 @@ namespace App\Presenters;
 
 use App\Model\Carousel;
 use Nette;
-use Nette\ComponentModel\IComponent;
 
 
 final class HomepagePresenter extends Nette\Application\UI\Presenter {
+    protected $data;
+
+    function __construct() {
+        $data = 42;
+    }
 
     function renderDefault() {
 
@@ -18,19 +22,19 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
             'id' => 'carouselExampleControls'
         ]))->add_slide([
             'class' => 'active',
-            'img' => [ 'src' => '/files/img/foto/a0004.png', 'alt' => 'Fourth slide' ]
+            'img' => [ 'src' => '/files/img/foto/SVKvDobeStavky/a0004.jpg', 'alt' => 'Fourth slide' ]
         ])->add_slide([
-            'img' => [ 'src' => '/files/img/foto/a0005.png', 'alt' => 'Fifth slide' ]
+            'img' => [ 'src' => '/files/img/foto/SVKvDobeStavky/a0005.jpg', 'alt' => 'Fifth slide' ]
         ])->add_slide([
-            'img' => [ 'src' => '/files/img/foto/a0001.png', 'alt' => 'First slide' ]
+            'img' => [ 'src' => '/files/img/foto/SVKvDobeStavky/a0001.jpg', 'alt' => 'First slide' ]
         ])->add_slide([
-            'img' => [ 'src' => '/files/img/foto/a0002.png', 'alt' => 'Second slide' ]
+            'img' => [ 'src' => '/files/img/foto/SVKvDobeStavky/a0002.jpg', 'alt' => 'Second slide' ]
         ])->add_slide([
-            'img' => [ 'src' => '/files/img/foto/a0003.png', 'alt' => 'Third slide' ]
+            'img' => [ 'src' => '/files/img/foto/SVKvDobeStavky/a0003.jpg', 'alt' => 'Third slide' ]
         ])->add_slide([
-            'img' => [ 'src' => '/files/img/foto/a0006.png', 'alt' => 'Third slide' ]
+            'img' => [ 'src' => '/files/img/foto/SVKvDobeStavky/a0006.jpg', 'alt' => 'Third slide' ]
         ])->add_slide([
-            'img' => [ 'src' => '/files/img/foto/a0007.png', 'alt' => 'Third slide' ]
+            'img' => [ 'src' => '/files/img/foto/SVKvDobeStavky/a0007.jpg', 'alt' => 'Third slide' ]
         ])->render();
 
         $books = [
@@ -96,17 +100,66 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
 
         $people = [
             [
-                'img' => 'https://proxy.duckduckgo.com/iu/?u=https%3A%2F%2Ftse4.mm.bing.net%2Fth%3Fid%3DOIP.YfLelYg0Xm_V68xuDFCwsgAAAA%26pid%3DApi&f=1',
-                'name' => 'Jan Novák',
-                'job' => 'Iniciátor',
-                'years' => '1942-1942',
-                'desc' => 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam auctor sem eget sollicitudin pellentesque. Fusce eget nibh tincidunt lacus pretium consequat a eu sapien.'
+                'img' => '/files/img/osoby/vhavel.jpeg',
+                'name' => 'Václav Havel',
+                'job' => 'Spisovatel a dramaturg, dramatik, prezident',
+                'years' => '1936-2011',
+                'desc' => 'Narozen 5. 10. 1936 v Praze, zemřel 18. 12. 2011 v Hrádečku u Vlčic. Spisovatel a dramaturg, dramatik, publicista v literárních a divadelních časopisech, esejista, politik, v letech 1989-1992 prezident Československa, v letech 1993-2003 prezident České republiky.'
+            ], [
+                'img' => '/files/img/osoby/jruml.jpeg',
+                'name' => 'Jan Ruml',
+                'job' => 'Novinář a politik',
+                'years' => '1953-',
+                'desc' => ''
+            ], [
+                'img' => '/files/img/osoby/jdienstbier.jpeg',
+                'name' => 'Jiří Dienstbier',
+                'job' => 'Novinář a publicista, politik',
+                'years' => '1937-2011',
+                'desc' => 'Narozen 20. 4. 1937 v Kladně, zemřel 8. 1. 2011 v Praze. Novinář a publicista, politik.'
+            ], [
+                'img' => '/files/img/osoby/spanek.jpeg',
+                'name' => 'Šimon Pánek',
+                'job' => 'Politický aktivista a humanitární manažer',
+                'years' => '1967-',
+                'desc' => 'Narozen 27. 12. 1967 v Praze. Nadační pracovník, jeden ze studentských vůdců roku 1989. Spoluautor řady dokumentů o krizových oblastech světa a o české historii.'
+            ], [
+                'img' => '/files/img/osoby/mmejstrik.jpeg',
+                'name' => 'Martin Mejstřík',
+                'job' => 'Loutkoherec a nezávislý publicista',
+                'years' => '1962-',
+                'desc' => 'Narozen 30.5.1962 v Kolíně. Loutkoherec a nezávislý publicista, redaktor revue kavárna, pulbicistické práce.'
+            ], [
+                'img' => '/files/img/osoby/jdienstbier.jpeg',
+                'name' => 'Jiří Dienstbier',
+                'job' => 'Novinář a publicista, politik',
+                'years' => '1937-2011',
+                'desc' => 'Narozen 20. 4. 1937 v Kladně, zemřel 8. 1. 2011 v Praze. Novinář a publicista, politik.'
+            ], [
+                'img' => '/files/img/osoby/jdienstbier.jpeg',
+                'name' => 'Jiří Dienstbier',
+                'job' => 'Novinář a publicista, politik',
+                'years' => '1937-2011',
+                'desc' => 'Narozen 20. 4. 1937 v Kladně, zemřel 8. 1. 2011 v Praze. Novinář a publicista, politik.'
             ]
         ];
-
-        $people = array_fill(0, 6, $people[0]);
         $this->template->people = $people;
 
+        $this->template->notgood_ppl = [
+            [
+                'img' => '/files/img/osoby/ghusak.jpeg',
+                'name' => 'Gustáv Husák',
+                'job' => 'Právník, politik a státník, československý prezident',
+                'years' => '1913-1991',
+                'desc' => 'Narozen 10.1.1913 v Bratislavě, zemřel 18.11.1991 tamtéž. Právník, politik a státník, československý prezident, politické práce.'
+            ], [
+                'img' => '/files/img/osoby/mjakes.jpeg',
+                'name' => 'Miloš Jakeš',
+                'job' => 'Elektromechanik, člen KSČ',
+                'years' => '1922-',
+                'desc' => 'Narozen 12.8.1922 v Českých Chalupách u Českého Krumlova. Elektromechanik, RSDr., komunistický politik.'
+            ]
+        ];
 
         $this->template->links = [
             'https://www.knihovny.cz/Record/auth.AUT10-000038323' => 'Pavel Tigrid',

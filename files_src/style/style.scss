@@ -76,7 +76,6 @@ header {
       padding: .1em;
       margin: .5em auto;
       color: gray;
-      border-bottom: 1px solid #d6d6d6;
 
       span {
         font-style: italic;
@@ -125,10 +124,9 @@ main {
       h1, h2, h3 {
         display: block;
         width: 100%;
-        border-bottom: 1px solid lightgray;
 
-        &.main {
-          text-align: center;
+        &.underline {
+          border-bottom: 1px solid lightgray;
         }
       }
     }
@@ -189,8 +187,14 @@ main {
       border: 1px double #DDD;
       border-radius: 3px;
 
-      .tns-nav {
-        display: none;
+      .tns-outer {
+        button {
+          display: none;
+        }
+
+        .tns-nav {
+          display: none;
+        }
       }
 
       &.dark {
@@ -317,7 +321,6 @@ main {
       }
     }
   }
-
 }
 
 footer {
