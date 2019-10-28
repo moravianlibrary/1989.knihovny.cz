@@ -98,20 +98,34 @@ header {
           font-size: 105%;
           font-weight: bold;
         }
+
+        &.control{
+          a.btn{
+            @include media-breakpoint-up(xl) {
+              padding: 1rem 2.4rem;
+              font-size: 1.4rem;
+              margin: 2em 1rem;
+            }
+          }
+        }
       }
     }
 
 
     @include media-breakpoint-up(lg) {
-      margin: 12em 0;
+      margin: 4em 0;
       padding: 2em;
       font-size: 140%;
     }
     @include media-breakpoint-up(xl) {
-      margin: 9em 0;
+      margin: 3em 0;
       padding: 2em 4em;
     }
   }
+}
+
+nav.navbar {
+  background-color: red;
 }
 
 main {

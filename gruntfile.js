@@ -10,14 +10,14 @@ module.exports = function (grunt) {
         sass: {
             dist: {
                 files: {
-                    'www/files/style/style.css': 'files_src/style/style.scss'
+                    'html/files/style/style.css': 'files_src/style/style.scss'
                 }
             }
         },
         uglify: {
             ugly: {
                 files: {
-                    'www/files/script/page.js': [
+                    'html/files/script/page.js': [
                         'node_modules/jquery/dist/jquery.min.js',
                         'node_modules/tiny-slider/tiny-slider.js',
                         'files_src/script/page.js'
