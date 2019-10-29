@@ -10,7 +10,10 @@
                         <h5 class="name">{$people[0]['name']}</h5>
                         <h6 class="date">{$people[0]['job']}, {$people[0]['years']}</h6>
                     </div>
-                    <p>{$people[0]['desc']}</p>
+                    <p>{$people[0]['desc']}<ul class="control">
+                        <li n:if="isset($people[0]['authorof'])"><a href="{$people[0]['authorof']}">Jsem autorem</a></li>
+                        <li n:if="isset($people[0]['about'])"><a href="{$people[0]['about']}">Napsali o mně</a></li>
+                    </ul></p>
                 </div>
             </div>
             <ul class="ppl-list" id="list">
@@ -64,7 +67,7 @@
 </div>
 
 <div class="row">
-    <h2 class="main">Videa a filmy</h2>
+    <h2 class="text-center">Naše vzpomínky</h2>
     <div class="col-lg-6 video-block">
         {block video-block}
             <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fressources.blogdumoderateur.com%2F2016%2F09%2Fyoutube-1.jpg&f=1&nofb=1">
@@ -76,6 +79,11 @@
         {/block}
     </div>
     <div n:foreach="[a,b] as $l" class="col-sm-6 col-lg-3 video-block">{include video-block}</div>
+</div>
+<div class="row gallery">
+    <div class="col-xs-6 col-lg-4 col-xl-2 item" n:foreach="range(0,10) as $val">
+        <img style="background:rgb({rand(0,255)},{rand(0,255)},{rand(0,255)});">
+    </div>
 </div>
 <div class="bookshelf slide row" n:if="count($books) > 0">
             <div class="col-sm-6 col-md-4 col-lg-3 item" n:foreach="$books as $book">
@@ -89,6 +97,15 @@
                 </a>
             </div>
 </div>
+<div class="row periodicals">
+    <h2 class="text-center">Co se psalo v tisku</h2>
+    <div class="col-sm-4 col-lg-2 item" n:foreach="$periodicals as $obalka">
+        <div class="cover">
+            <img src="{$periodicals_home}/{$obalka['dir']}/{$obalka['cover']}">
+        </div>
+        <h4 class="title">{$obalka['title']}</h4>
+    </div>
+</div>
 <div class="row">
     <h2 class="main">Další zdroje</h2>
     <ul class="col-12 col-md-6 col-lg-4" n:foreach="[1,2,3] as $i">
@@ -98,14 +115,5 @@
             </ul>
         </div>
     </ul>
-</div>
-<div class="row periodicals">
-    <h2 class="main">Co se psalo v tisku</h2>
-    <div class="col-sm-4 col-lg-2 item" n:foreach="$periodicals as $obalka">
-        <div class="cover">
-            <img src="{$periodicals_home}/{$obalka['dir']}/{$obalka['cover']}">
-        </div>
-        <h4 class="title">{$obalka['title']}</h4>
-    </div>
 </div>
 <button type="button" class="btn btn-secondary single">Vyzkoušejte své znalosti v krátkém kvízu.</button>

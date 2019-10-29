@@ -104,7 +104,9 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
                 'name' => 'Václav Havel',
                 'job' => 'Spisovatel a dramaturg, dramatik, prezident',
                 'years' => '1936-2011',
-                'desc' => 'Narozen 5. 10. 1936 v Praze, zemřel 18. 12. 2011 v Hrádečku u Vlčic. Spisovatel a dramaturg, dramatik, publicista v literárních a divadelních časopisech, esejista, politik, v letech 1989-1992 prezident Československa, v letech 1993-2003 prezident České republiky.'
+                'desc' => 'Narozen 5. 10. 1936 v Praze, zemřel 18. 12. 2011 v Hrádečku u Vlčic. Spisovatel a dramaturg, dramatik, publicista v literárních a divadelních časopisech, esejista, politik, v letech 1989-1992 prezident Československa, v letech 1993-2003 prezident České republiky.',
+                'authorof' => 'https://www.knihovny.cz/Search/Results/?bool0[]=AND&type0[]=adv_search_author_corporation&lookfor0[]=Václav+havel&join=AND&searchTypeTemplate=advanced&database=Solr&limit=20&sort=relevance&page=1',
+                'about' => 'https://www.knihovny.cz/Search/Results/?bool0[]=AND&type0[]=adv_search_title_series&lookfor0[]=Václav+havel&join=AND&searchTypeTemplate=advanced&database=Solr&limit=20&sort=relevance&page=1'
             ], [
                 'img' => '/files/img/osoby/jruml.jpeg',
                 'name' => 'Jan Ruml',
