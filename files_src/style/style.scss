@@ -232,7 +232,6 @@ main {
       }
 
       h6.date {
-        white-space: nowrap;
         font-size: 90%;
         color: #4C4C4C;
       }
@@ -332,23 +331,46 @@ main {
 
   .gallery {
     .item {
+      margin:5px auto;
+      cursor: pointer;
+      transition:color .3s ease-in-out;
       img {
         display: block;
-        margin: 10px;
+        position: relative;
         width: 100%;
         min-height: 120px;
+        transition: filter .3s ease-in-out;
+      }
+
+      &:hover {
+        color:gray;
+        img {
+          filter: blur(2px);
+        }
       }
     }
   }
 
   .periodicals {
     .item {
+
       .cover {
         height: 250px;
         overflow: hidden;
 
         img {
           width: 100%;
+          height: 100%;
+        }
+      }
+
+      .title {
+        padding: 0.25em 5px;
+
+        .meta {
+          display: block;
+          font-size: 95%;
+          color: gray;
         }
       }
     }

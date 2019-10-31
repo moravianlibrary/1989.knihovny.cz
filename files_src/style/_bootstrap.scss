@@ -1,3 +1,8 @@
 @import "../../node_modules/bootstrap/scss/bootstrap";
 @import "../../node_modules/mdbootstrap/scss/mdb";
 @import "../../node_modules/tiny-slider/src/tiny-slider";
+@import "../../node_modules/fancybox/dist/scss/jquery.fancybox";
+
+.fancybox-overlay{
+  background: rgba(44,44,44,0.9);
+}

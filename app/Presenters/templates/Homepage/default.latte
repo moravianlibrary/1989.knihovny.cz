@@ -3,12 +3,12 @@
     <h2 class="text-center">Osobnosti revoluce</h2>
     <div class="col-sm-12 col-md-6 person_detail">
         <div class="ppl">
-            <div class="media" target="_blank" href="https://www.knihovny.cz/Record/">
+            <div class="media">
                 <img class="profile" src="{$people[0]['img']}" alt="Osoba">
                 <div class="media-body">
                     <div class="title">
                         <h5 class="name">{$people[0]['name']}</h5>
-                        <h6 class="date">{$people[0]['job']}, {$people[0]['years']}</h6>
+                        <h6 class="date">{$people[0]['born']|date:'%j.%n.%Y'}{if !empty($people[0]['dead'])}-{$people[0]['dead']|date:'%j.%n.%Y'}{/if}, {$people[0]['job']}</h6>
                     </div>
                     <p>{$people[0]['desc']}<ul class="control">
                         <li n:if="isset($people[0]['authorof'])"><a href="{$people[0]['authorof']}">Jsem autorem</a></li>
@@ -21,36 +21,10 @@
                     <img class="avatar rounded-circle" src="{$person['img']}">
                     <div class="details">
                         <h5 class="name">{$person['name']}</h5>
-                        <h6 class="date">{$person['years']}</h6>
+                        <h6 class="date">{$people[0]['born']|date:'%Y'}{if !empty($person['dead'])}-{$person['dead']|date:'%Y'}{/if}</h6>
                     </div>
                 </li>
             </ul>
-        </div>
-    </div>
-
-    <div class="col-sm-12 col-md-6 people">
-        <div n:if="count($notgood_ppl) > 0" class="person_detail">
-            <div class="ppl dark">
-                <div class="media" target="_blank" href="https://www.knihovny.cz/Record/">
-                    <img class="profile" src="{$notgood_ppl[0]['img']}" alt="Osoba">
-                    <div class="media-body">
-                        <div class="title">
-                            <h5 class="name">{$notgood_ppl[0]['name']}</h5>
-                            <h6 class="date">{$notgood_ppl[0]['job']}, {$notgood_ppl[0]['years']}</h6>
-                        </div>
-                        <p>{$people[0]['desc']}</p>
-                    </div>
-                </div>
-                <ul class="ppl-list" id="list">
-                    <li class="item" n:foreach="$notgood_ppl as $person">
-                        <img class="avatar rounded-circle" src="{$person['img']}">
-                        <div class="details">
-                            <h5 class="name">{$person['name']}</h5>
-                            <h6 class="date">{$person['years']}</h6>
-                        </div>
-                    </li>
-                </ul>
-            </div>
         </div>
     </div>
 </div>
@@ -97,23 +71,27 @@
                 </a>
             </div>
 </div>
-<div class="row periodicals">
+<div class="row periodicals gallery">
     <h2 class="text-center">Co se psalo v tisku</h2>
     <div class="col-sm-4 col-lg-2 item" n:foreach="$periodicals as $obalka">
         <div class="cover">
-            <img src="{$periodicals_home}/{$obalka['dir']}/{$obalka['cover']}">
+            <img src="{$obalka['path']}" data-gallery="{$obalka['items']}">
         </div>
-        <h4 class="title">{$obalka['title']}</h4>
+        <h4 class="title">{$obalka['title']}<span class="meta"</h4>
     </div>
 </div>
 <div class="row">
     <h2 class="main">Další zdroje</h2>
-    <ul class="col-12 col-md-6 col-lg-4" n:foreach="[1,2,3] as $i">
-        <div class="shorttext d-block">
-            <ul>
-                <li n:foreach="range('A', 'F') as $link"><a href="#{$link}">{$link}</a></li>
-            </ul>
+
+    <div class="col-xs-6 col-md-4 col-lg-3 mb-2" n:foreach="range(1,16) as $i">
+        <div class="media">
+          <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fnews.nationalgeographic.com%2Fcontent%2Fdam%2Fnews%2F2016%2F10%2F08%2Fdrill-monkey-waq%2Fdrill-monkey-01.ngsversion.1475926206479.jpg&f=1&nofb=1" class="mr-3" alt="..." style="width:64px;">
+          <a class="media-body">
+            <h5 class="m-0">Název článku</h5>
+              podtitul
+          </a>
         </div>
-    </ul>
+    </div>
+
 </div>
 <button type="button" class="btn btn-secondary single">Vyzkoušejte své znalosti v krátkém kvízu.</button>

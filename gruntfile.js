@@ -20,6 +20,7 @@ module.exports = function (grunt) {
                     'html/files/script/page.js': [
                         'node_modules/jquery/dist/jquery.min.js',
                         'node_modules/tiny-slider/tiny-slider.js',
+                        'node_modules/fancybox/dist/js/jquery.fancybox.js',
                         'files_src/script/page.js'
                     ]
                 }
