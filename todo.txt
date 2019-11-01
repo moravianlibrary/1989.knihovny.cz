@@ -1,3 +1,19 @@
 další odkazy - jako knihy
 zablokovat stahování obálek
-patička - světlá + loga
+fotky-čtverec
+zvětšit písmo
+style:print{
+    vyhodit menu-sticky
+}
+životopis -v
+knihy + zobrazit další
+knihy++tlačítko[dostupnost v knihovně]
+videa
+časopisy:navigace fotkama
++přidej vlastní fotky
+dořešit pravé myšítko
+vzpomínky@mzk.cz
+
+::
+fotky
+upload

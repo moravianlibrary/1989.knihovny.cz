@@ -7,16 +7,17 @@ namespace App\Presenters;
 use App\Model\Carousel;
 use App\Model\Files;
 use App\Model\People;
-use Latte\Engine;
+use App\Model\Book;
 use Nette;
 
 
 final class HomepagePresenter extends Nette\Application\UI\Presenter {
-    protected $files, $people;
+    protected $files, $people, $book;
 
-    function __construct(Files $files, People $ppl) {
+    function __construct(Files $files, People $ppl, Book $book) {
         $this->files = $files;
         $this->people = $ppl;
+        $this->book = $book;
     }
 
     function renderDefault() {
@@ -39,6 +40,8 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
 
         $this->template->carousel = $carousel->render();
 
+        $this->template->books = $this->book->get_books('REVOLUCE');
+
         $books = [
             [
                 'img' => $this->files->get_files_by_ID(119)[0]['path'],
@@ -59,10 +62,6 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
                 'record' => 'svkpk.PNA01-000537283'
             ]
         ];
-
-        $books = array_merge($books, $books);
-        shuffle($books);
-        $this->template->books = $books;
 
         $periodicals = [
             [
@@ -106,12 +105,14 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
                     'title' => $item['title']
                 ];
             }
-
             $paper['path'] = $this->files->get_files_by_dir($paper['cover'])[0]['path'];
+            //encode other image data with JSON
             $paper['items'] = json_encode($items);
         }
 
         $this->template->periodicals = $periodicals;
+
+        $this->template->photo = $this->files->get_files_by_dir('/files/img/foto');
 
         $this->template->people = $this->people->get_person_by_ID([1]);
 

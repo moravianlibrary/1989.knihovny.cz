@@ -6,16 +6,19 @@ var config = {
     "mouseDrag": true,
     "swipeAngle": false,
     "speed": 400,
-    "autoplay":true,
+    "autoplay": true,
 };
 tns(config);
 
 jQuery(document).ready(function () {
-    $('img').on('contextmenu', function (e) {
+
+    var disableRightClick = function(e){
         e.preventDefault();
-    });
-    $('.periodicals .item .cover').click(function () {
+    }
+
+    $('.periodicals .item .cover').on('contextmenu', disableRightClick).on('click', function () {
         var gallery = $(this).find('img').data('gallery');
-        $.fancybox(gallery);
+        $.fancybox();
+        $.fancybox.open(gallery);
     });
 });

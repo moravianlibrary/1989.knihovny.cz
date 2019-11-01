@@ -53,7 +53,7 @@ class Files {
     }
 
     function get_files_by_dir(string $dirName){
-        $res = $this->db->query('SELECT * FROM `upload` WHERE `path` LIKE ?', "%$dirName%");
+        $res = $this->db->query('SELECT * FROM `upload` WHERE `path` LIKE ?', "%$dirName%", 'ORDER BY `order`');
         return $res->fetchAll();
     }
 }

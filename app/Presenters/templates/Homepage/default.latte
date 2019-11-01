@@ -11,14 +11,14 @@
                         <h6 class="date">{$people[0]['born']|date:'%j.%n.%Y'}{if !empty($people[0]['dead'])}-{$people[0]['dead']|date:'%j.%n.%Y'}{/if}, {$people[0]['job']}</h6>
                     </div>
                     <p>{$people[0]['desc']}<ul class="control">
-                        <li n:if="isset($people[0]['authorof'])"><a href="{$people[0]['authorof']}">Jsem autorem</a></li>
-                        <li n:if="isset($people[0]['about'])"><a href="{$people[0]['about']}">Napsali o mně</a></li>
+                        <li n:if="isset($people[0]['wrote'])"><a target="_blank" href="{$people[0]['wrote']}">Jsem autorem</a></li>
+                        <li n:if="isset($people[0]['theywrote'])"><a target="_blank" href="{$people[0]['theywrote']}">Napsali o mně</a></li>
                     </ul></p>
                 </div>
             </div>
             <ul class="ppl-list" id="list">
                 <li class="item" n:foreach="$people as $person">
-                    <img class="avatar rounded-circle" src="{$person['img']}">
+                    <img class="avatar" src="{$person['img']}">
                     <div class="details">
                         <h5 class="name">{$person['name']}</h5>
                         <h6 class="date">{$people[0]['born']|date:'%Y'}{if !empty($person['dead'])}-{$person['dead']|date:'%Y'}{/if}</h6>
@@ -29,11 +29,12 @@
     </div>
 </div>
 <div class="bookshelf row" n:if="count($books) > 0">
-    <div class="col-sm-3 item" n:foreach="$books as $book">
+    <div class="col-sm-4 item" n:foreach="$books as $book">
         <a class="media" target="_blank" href="https://www.knihovny.cz/Record/{$book['record']}">
             <img class="cover" src="{$book['img']}" alt="Obálka knihy {$book['title']}">
             <div class="media-body">
-                <h5 class="title">{$book['title']}</h5>
+                <h5 class="title">{$book['title']|truncate:60}</h5>
+                <h6 class="yr">{$book['year']}</h6>
                 <h6 class="author">{$book['author']}</h6>
             </div>
         </a>
@@ -55,10 +56,14 @@
     <div n:foreach="[a,b] as $l" class="col-sm-6 col-lg-3 video-block">{include video-block}</div>
 </div>
 <div class="row gallery">
-    <div class="col-xs-6 col-lg-4 col-xl-2 item" n:foreach="range(0,10) as $val">
-        <img style="background:rgb({rand(0,255)},{rand(0,255)},{rand(0,255)});">
+    <div class="col-xs-6 col-lg-4 col-xl-2 item" n:foreach="$photo as $pic">
+        <a rel="gallery" href="{$pic['path']}" title="Odkaz na velkou fotografii {$pic['title']}">
+
+            <img src="{$pic['path']}" title="{$pic['title']}">
+        </a>
     </div>
 </div>
+<h2 class="text-center">Knihy o revoluci</h2>
 <div class="bookshelf slide row" n:if="count($books) > 0">
             <div class="col-sm-6 col-md-4 col-lg-3 item" n:foreach="$books as $book">
                 {continueIf $iterator->counter > 8}
@@ -81,7 +86,7 @@
     </div>
 </div>
 <div class="row">
-    <h2 class="main">Další zdroje</h2>
+    <h2 class="text-center">Další zdroje</h2>
 
     <div class="col-xs-6 col-md-4 col-lg-3 mb-2" n:foreach="range(1,16) as $i">
         <div class="media">
@@ -94,4 +99,4 @@
     </div>
 
 </div>
-<button type="button" class="btn btn-secondary single">Vyzkoušejte své znalosti v krátkém kvízu.</button>
+<button type="button" class="btn btn-primary single">Vyzkoušejte své znalosti v krátkém kvízu.</button>

@@ -331,9 +331,10 @@ main {
 
   .gallery {
     .item {
-      margin:5px auto;
+      margin: 5px auto;
       cursor: pointer;
-      transition:color .3s ease-in-out;
+      transition: color .3s ease-in-out;
+
       img {
         display: block;
         position: relative;
@@ -343,7 +344,8 @@ main {
       }
 
       &:hover {
-        color:gray;
+        color: gray;
+
         img {
           filter: blur(2px);
         }
@@ -385,4 +387,8 @@ footer {
     padding: 1em;
     text-align: center;
   }
+}
+
+.hide {
+  display: none;
 }
