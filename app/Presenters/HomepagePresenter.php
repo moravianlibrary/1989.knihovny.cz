@@ -15,6 +15,8 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
     protected $files, $people, $book;
 
     function __construct(Files $files, People $ppl, Book $book) {
+        parent::__construct();
+
         $this->files = $files;
         $this->people = $ppl;
         $this->book = $book;
