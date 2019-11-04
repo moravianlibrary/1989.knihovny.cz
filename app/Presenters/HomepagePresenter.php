@@ -14,6 +14,15 @@ use Nette;
 final class HomepagePresenter extends Nette\Application\UI\Presenter {
     protected $files, $people, $book;
 
+    /**
+     * @var \Nette\Database\Context
+     */
+    protected $database;
+
+    public function injectDatabase(Nette\Database\Context $database){
+        $this->database = $database;
+    }
+
     function __construct(Files $files, People $ppl, Book $book) {
         parent::__construct();
 
