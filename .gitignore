@@ -1,6 +1,11 @@
+.idea
 app/config/local.neon
 log/
 temp/
 vendor/
 node_modules/
 files_src/navrh/
+/package-lock.json
+/www/files/
+/www/adminer/
+/www/editor/
