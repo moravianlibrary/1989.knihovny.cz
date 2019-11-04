@@ -402,3 +402,13 @@ footer {
 .hide {
   display: none;
 }
+
+section {
+  margin: 0;
+  padding: 3rem 0;
+  border-bottom: 1px solid $gray-200;
+}
+
+section:nth-child(odd) {
+  background: $gray-100;
+}

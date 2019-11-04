@@ -1,114 +1,156 @@
 {block content}
-<div class="row people" n:if="count($people) > 0">
-    <h2 class="text-center">Osobnosti revoluce</h2>
-    <div class="col-sm-12 col-md-6 person_detail">
-        <div class="ppl">
-            <div class="media">
-                <img class="profile" src="{$people[0]['img']}" alt="Osoba">
-                <div class="media-body">
-                    <div class="title">
-                        <h5 class="name">{$people[0]['name']}</h5>
-                        <h6 class="date">{$people[0]['born']|date:'%j.%n.%Y'}{if !empty($people[0]['dead'])}-{$people[0]['dead']|date:'%j.%n.%Y'}{/if}, {$people[0]['job']}</h6>
+
+<section>
+    <div class="container">
+        <h2 class="text-center">Osobnosti revoluce</h2>
+        <div class="row people" n:if="count($people) > 0">
+            {dump $people}
+            {foreach $people as $item}
+                <div class="col-sm-12 col-md-6 person_detail">
+                    <div class="ppl">
+                        <div class="media">
+                            <img class="profile" src="{$people[0]['img']}" alt="Osoba">
+                            <div class="media-body">
+                                <div class="title">
+                                    <h5 class="name">{$people[0]['name']}</h5>
+                                    <h6 class="date">{$people[0]['born']|date:'%j.%n.%Y'}{if !empty($people[0]['dead'])}-{$people[0]['dead']|date:'%j.%n.%Y'}{/if}, {$people[0]['job']}</h6>
+                                </div>
+                                <p>{$people[0]['desc']}
+                                <ul class="control">
+                                    <li n:if="isset($people[0]['wrote'])"><a target="_blank" href="{$people[0]['wrote']}">Jsem autorem</a></li>
+                                    <li n:if="isset($people[0]['theywrote'])"><a target="_blank" href="{$people[0]['theywrote']}">Napsali o mně</a></li>
+                                </ul>
+                                </p>
+                            </div>
+                        </div>
+                        <ul class="ppl-list" id="list">
+                            <li class="item" n:foreach="$people as $person">
+                                <img class="avatar" src="{$person['img']}">
+                                <div class="details">
+                                    <h5 class="name">{$person['name']}</h5>
+                                    <h6 class="date">{$people[0]['born']|date:'%Y'}{if !empty($person['dead'])}-{$person['dead']|date:'%Y'}{/if}</h6>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                    <p>{$people[0]['desc']}<ul class="control">
-                        <li n:if="isset($people[0]['wrote'])"><a target="_blank" href="{$people[0]['wrote']}">Jsem autorem</a></li>
-                        <li n:if="isset($people[0]['theywrote'])"><a target="_blank" href="{$people[0]['theywrote']}">Napsali o mně</a></li>
-                    </ul></p>
+                </div>
+            {/foreach}
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="bookshelf row" n:if="count($books) > 0">
+            <div class="col-sm-4 item" n:foreach="$books as $book">
+                <a class="media" target="_blank" href="https://www.knihovny.cz/Record/{$book['record']}">
+                    <img class="cover" src="{$book['img']}" alt="Obálka knihy {$book['title']}">
+                    <div class="media-body">
+                        <h5 class="title">{$book['title']|truncate:60}</h5>
+                        <h6 class="yr">{$book['year']}</h6>
+                        <h6 class="author">{$book['author']}</h6>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <h2 class="text-center">Naše vzpomínky</h2>
+        <div class="row">
+            <div class="col-lg-6 video-block big">
+                {block video-block}
+                    <iframe src="{$videos[0][0]}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    <div class="content">
+                        <h3>{$videos[0][1]}</h3>
+                        <p class="author">Zdroj: Česká Televize</p>
+                        <p>Vivamus metus urna, fringilla vitae lorem quis, mollis dapibus mauris. Vivamus et leo urna. Sed et varius tortor. Ut eu odio justo. Maecenas ex mi, laoreet at imperdiet a, laoreet eu orci. Nam cursus rhoncus leo vel commodo. Nullam sodales viverra tortor, et ultricies libero porta elementum.</p>
+                    </div>
+                {/block}
+            </div>
+            <div class="col-lg-6">
+                <div class="row">
+                    <div n:foreach="[$videos[1], $videos[2]] as $video" class="col-lg-6 video-block">
+                        <iframe src="{$video[0]}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                        <div class="content">
+                            <h3>{$video[1]}</h3>
+                            <p class="author">{$video[2]}</p>
+                            <p>{$video[3]}</p>
+                        </div>
+                    </div>
+
+                    <p></p>
                 </div>
             </div>
-            <ul class="ppl-list" id="list">
-                <li class="item" n:foreach="$people as $person">
-                    <img class="avatar" src="{$person['img']}">
-                    <div class="details">
-                        <h5 class="name">{$person['name']}</h5>
-                        <h6 class="date">{$people[0]['born']|date:'%Y'}{if !empty($person['dead'])}-{$person['dead']|date:'%Y'}{/if}</h6>
-                    </div>
-                </li>
-            </ul>
         </div>
     </div>
-</div>
-<div class="bookshelf row" n:if="count($books) > 0">
-    <div class="col-sm-4 item" n:foreach="$books as $book">
-        <a class="media" target="_blank" href="https://www.knihovny.cz/Record/{$book['record']}">
-            <img class="cover" src="{$book['img']}" alt="Obálka knihy {$book['title']}">
-            <div class="media-body">
-                <h5 class="title">{$book['title']|truncate:60}</h5>
-                <h6 class="yr">{$book['year']}</h6>
-                <h6 class="author">{$book['author']}</h6>
-            </div>
-        </a>
-    </div>
-</div>
+</section>
 
-<div class="row">
-    <h2 class="text-center">Naše vzpomínky</h2>
-    <div class="col-lg-6 video-block big">
-        {block video-block}
-            <iframe src="{$videos[0][0]}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-            <div class="content">
-            <h3>{$videos[0][1]}</h3>
-            <p class="author">Zdroj: Česká Televize</p>
-            <p>Vivamus metus urna, fringilla vitae lorem quis, mollis dapibus mauris. Vivamus et leo urna. Sed et varius tortor. Ut eu odio justo. Maecenas ex mi, laoreet at imperdiet a, laoreet eu orci. Nam cursus rhoncus leo vel commodo. Nullam sodales viverra tortor, et ultricies libero porta elementum.</p>
-        </div>
-        {/block}
-    </div>
-    <div class="col-lg-6">
-        <div class="row">
-            <div n:foreach="[$videos[1], $videos[2]] as $video" class="col-lg-6 video-block">
-                <iframe src="{$video[0]}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                <div class="content">
-                <h3>{$video[1]}</h3>
-                <p class="author">{$video[2]}</p>
-                <p>{$video[3]}</p>
+<section>
+    <div class="container">
+        <div class="row gallery">
+            <div class="col-xs-6 col-lg-4 col-xl-2 item" n:foreach="$photo as $pic">
+                <a rel="gallery" href="{$pic['path']}" title="Odkaz na velkou fotografii {$pic['title']}">
+                    <img src="{$pic['path']}" title="{$pic['title']}">
+                </a>
             </div>
         </div>
-
-            <p></p>
     </div>
-</div>
-<div class="row gallery">
-    <div class="col-xs-6 col-lg-4 col-xl-2 item" n:foreach="$photo as $pic">
-        <a rel="gallery" href="{$pic['path']}" title="Odkaz na velkou fotografii {$pic['title']}">
+</section>
 
-            <img src="{$pic['path']}" title="{$pic['title']}">
-        </a>
-    </div>
-</div>
-<h2 class="text-center">Knihy o revoluci</h2>
-<div class="bookshelf slide row" n:if="count($books) > 0">
+<section>
+    <div class="container">
+        <h2 class="text-center">Knihy o revoluci</h2>
+        <div class="bookshelf slide row" n:if="count($books) > 0">
             <div class="col-sm-6 col-md-4 col-lg-3 item" n:foreach="$books as $book">
                 {continueIf $iterator->counter > 8}
                 <a class="media" target="_blank" href="https://www.knihovny.cz/Record/{$book['record']}">
-                  <img class="cover" src="{$book['img']}" alt="Obálka knihy {$book['title']}">
-                  <div class="media-body">
-                    <h5 class="title">{$book['title']}</h5>
-                    <h6 class="author">{$book['author']}</h6>
-                  </div>
+                    <img class="cover" src="{$book['img']}" alt="Obálka knihy {$book['title']}">
+                    <div class="media-body">
+                        <h5 class="title">{$book['title']}</h5>
+                        <h6 class="author">{$book['author']}</h6>
+                    </div>
                 </a>
             </div>
-</div>
-<div class="row periodicals gallery">
-    <h2 class="text-center">Co se psalo v tisku</h2>
-    <div class="col-sm-4 col-lg-2 item" n:foreach="$periodicals as $obalka">
-        <div class="cover">
-            <img src="{$obalka['path']}" data-gallery="{$obalka['items']}">
-        </div>
-        <h4 class="title">{$obalka['title']}<span class="meta"</h4>
-    </div>
-</div>
-<div class="row">
-    <h2 class="text-center">Další zdroje</h2>
-
-    <div class="col-xs-6 col-md-4 col-lg-3 mb-2" n:foreach="range(1,16) as $i">
-        <div class="media">
-          <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fnews.nationalgeographic.com%2Fcontent%2Fdam%2Fnews%2F2016%2F10%2F08%2Fdrill-monkey-waq%2Fdrill-monkey-01.ngsversion.1475926206479.jpg&f=1&nofb=1" class="mr-3" alt="..." style="width:64px;">
-          <a class="media-body">
-            <h5 class="m-0">Název článku</h5>
-              podtitul
-          </a>
         </div>
     </div>
+</section>
 
-</div>
-<button type="button" class="btn btn-primary single">Vyzkoušejte své znalosti v krátkém kvízu.</button>
+<section>
+    <div class="container">
+        <h2 class="text-center">Co se psalo v tisku</h2>
+        <div class="row periodicals gallery">
+            <div class="col-sm-4 col-lg-2 item" n:foreach="$periodicals as $obalka">
+                <div class="cover">
+                    <img src="{$obalka['path']}" data-gallery="{$obalka['items']}">
+                </div>
+                <h4 class="title">{$obalka['title']}<span class="meta"</h4>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <button type="button" class="btn btn-primary single">Vyzkoušejte své znalosti v krátkém kvízu.</button>
+    </div>
+</section>
+
+<section>
+    <div class="container">
+        <div class="row">
+            <h2 class="text-center">Další zdroje</h2>
+            <div class="col-xs-6 col-md-4 col-lg-3 mb-2" n:foreach="range(1,16) as $i">
+                <div class="media">
+                    <img src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fnews.nationalgeographic.com%2Fcontent%2Fdam%2Fnews%2F2016%2F10%2F08%2Fdrill-monkey-waq%2Fdrill-monkey-01.ngsversion.1475926206479.jpg&f=1&nofb=1" class="mr-3" alt="..." style="width:64px;">
+                    <a class="media-body">
+                        <h5 class="m-0">Název článku</h5>
+                        podtitul
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

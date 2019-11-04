@@ -7,7 +7,10 @@
     <link rel="stylesheet" type="text/css" href="/files/style/style.css">
     <!--[if (lt IE 9)]><script src="https://cdnjs.cloudflare.com/ajax/libs/tiny-slider/2.9.2/min/tiny-slider.helper.ie8.js"></script><![endif]-->
 
-	<title>{ifset title}{include title|stripHtml} | {/ifset}Nette Web</title>
+	<title>{ifset title}{include title|stripHtml} | {/ifset}Sametová revoluce (1989) v knihovnách</title>
+
+    <link rel="shortcut icon" href="{$basePath}/files/img/favicon/favicon.ico">
+
 </head>
 
 <body>
@@ -15,6 +18,9 @@
     <div class="row header flex-lg-column-reverse">
         {$carousel|noescape}
         <div class="col-lg-6 titletext">
+            <a href="/">
+                <img src="{$basePath}/files/img/logo.png" alt="Logo Sametová revoluce (1989) v knihovnách">
+            </a>
             <h1>Sametová revoluce <span>(1989)</span><p>V knihovnách</p></h1>
             <div class="text">
                 <p>Sametová revoluce je označení období politických změn v Československu mezi 17. listopadem a 29. prosincem roku 1989, které vedly k pádu komunistického režimu a přeměně politického zřízení na pluralitní demokracii.</p>
@@ -49,9 +55,10 @@
   </div>
 </nav>
 
-<main class='container'>
+<main>
 {include content}
 </main>
+
 <footer>
     <div class="container">
         Více knižních a mediálních zdrojů, můžete nalézt na <a href="//knihovny.cz">portále Knihovny.cz</a>.
