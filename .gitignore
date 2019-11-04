@@ -7,3 +7,5 @@ node_modules/
 files_src/navrh/
 /package-lock.json
 /www/files/
+/www/adminer/
+/www/editor/
