@@ -1,3 +1,12 @@
+// custom colors
+$color-cr-blue: #08437f;
+$color-cr-red: #d80c13;
+
+// bootstrap colors
+$blue: $color-cr-blue !default;
+$red: $color-cr-red !default;
+
+//
 $color-lighter: #474747;
 $color-bg-head: whitesmoke;
 $height-header: 650px;

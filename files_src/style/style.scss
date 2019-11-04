@@ -1,29 +1,29 @@
-@import "bootstrap";
 @import "var";
+@import "bootstrap";
 
 html {
   font-size: 14px;
 
-  a {
-
-    &, &:visited {
-      color: orangered;
-      text-decoration: none;
-    }
-
-    &:hover, &:active {
-      color: orange;
-    }
-  }
-
-  .btn.single {
-    display: block;
-    margin: 0px auto;
-    font-size: 2em;
-  }
-
-  p {
+  p:last-of-type {
     margin-bottom: 0;
+  }
+}
+
+.lead{
+  font-weight: 400;
+  font-size: 1.35rem;
+}
+
+h1.display-1{
+  font-size: 4rem;
+
+  strong{
+    font-weight: bold;
+  }
+
+  small{
+    font-size: 60%;
+    color: $gray-600;
   }
 }
 
@@ -69,63 +69,6 @@ header {
     }
   }
 
-  .titletext {
-    padding: 2.5em;
-
-    h1 {
-      padding: .1em;
-      margin: .5em auto;
-      color: gray;
-
-      span {
-        font-style: italic;
-      }
-
-      p {
-        font-size: 150%;
-        color: black;
-        text-transform: uppercase;
-        font-weight: bold;
-      }
-    }
-
-    .text {
-      p {
-        margin: .25em;
-        text-align: justify;
-
-        &.important {
-          font-size: 105%;
-          font-weight: bold;
-        }
-
-        &.control {
-          a.btn {
-            @include media-breakpoint-up(xl) {
-              padding: 1rem 2.4rem;
-              font-size: 1.4rem;
-              margin: 2em 1rem;
-            }
-          }
-        }
-      }
-    }
-
-
-    @include media-breakpoint-up(lg) {
-      margin: 4em 0;
-      padding: 2em;
-      font-size: 140%;
-    }
-    @include media-breakpoint-up(xl) {
-      margin: 3em 0;
-      padding: 2em 4em;
-    }
-  }
-}
-
-nav.navbar {
-  background-color: red;
 }
 
 main {
@@ -307,12 +250,12 @@ main {
     margin: .5em 0;
     border-radius: 5px;
 
-    iframe{
-      width:100%;
+    iframe {
+      width: 100%;
     }
 
-    &.big{
-      iframe{
+    &.big {
+      iframe {
         height: 300px;
       }
     }
@@ -391,7 +334,8 @@ main {
 
 footer {
   margin: 2em 0 0;
-  background: whitesmoke;
+  background: $gray-900;
+  color: white;
 
   div.container {
     padding: 1em;
@@ -409,6 +353,15 @@ section {
   border-bottom: 1px solid $gray-200;
 }
 
-section:nth-child(odd) {
+section:nth-child(even) {
   background: $gray-100;
+}
+
+h2 {
+
+  margin-bottom: 2rem;
+
+  span {
+    border-bottom: 5px solid $gray-200;
+  }
 }
