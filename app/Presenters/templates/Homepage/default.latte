@@ -58,7 +58,7 @@
 
 <section>
     <div class="container">
-        <h2 class="text-center">Naše vzpomínky</h2>
+        <h2 class="text-center"><span>Naše vzpomínky</span></h2>
         <div class="row">
             <div class="col-lg-6 video-block big">
                 {block video-block}
@@ -90,6 +90,7 @@
 
 <section>
     <div class="container">
+        <h2 class="text-center"><span>Fotogalerie</span></h2>
         <div class="row gallery">
             <div class="col-xs-6 col-lg-4 col-xl-2 item" n:foreach="$photo as $pic">
                 <a rel="gallery" href="{$pic['path']}" title="Odkaz na velkou fotografii {$pic['title']}">
@@ -102,7 +103,7 @@
 
 <section>
     <div class="container">
-        <h2 class="text-center">Knihy o revoluci</h2>
+        <h2 class="text-center"><span>Knihy o revoluci</span></h2>
         <div class="bookshelf slide row" n:if="count($books) > 0">
             <div class="col-sm-6 col-md-4 col-lg-3 item" n:foreach="$books as $book">
                 {continueIf $iterator->counter > 8}
@@ -120,7 +121,7 @@
 
 <section>
     <div class="container">
-        <h2 class="text-center">Co se psalo v tisku</h2>
+        <h2 class="text-center"><span>Co se psalo v tisku</span></h2>
         <div class="row periodicals gallery">
             <div class="col-sm-4 col-lg-2 item" n:foreach="$periodicals as $obalka">
                 <div class="cover">
