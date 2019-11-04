@@ -14,7 +14,18 @@ use Nette;
 final class HomepagePresenter extends Nette\Application\UI\Presenter {
     protected $files, $people, $book;
 
+    /**
+     * @var \Nette\Database\Context
+     */
+    protected $database;
+
+    public function injectDatabase(Nette\Database\Context $database){
+        $this->database = $database;
+    }
+
     function __construct(Files $files, People $ppl, Book $book) {
+        parent::__construct();
+
         $this->files = $files;
         $this->people = $ppl;
         $this->book = $book;
@@ -140,5 +151,9 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
             'https://www.knihovny.cz/Record/auth.AUT10-000047615' => 'Olga Havlová',
             'https://www.knihovny.cz/Record/auth.AUT10-000004550' => 'Jiří Černý'
         ];
+
+        $sources = $this->database->table('sources')
+            ->fetchAll();
+        $this->template->sources = $sources;
     }
 }
