@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Model;
 
 use Nette\Database\Connection;
+use func;
 
 class People {
     protected $db;
@@ -30,5 +31,16 @@ class People {
             'a.ID' => $ids
         ]);
         return $res->fetchAll();
+    }
+
+    function get_rand_people_from_group($group, $limit = 8){
+        $res = $this->db->query('SELECT `name`, `born`, `dead`, `job`, `desc`, `wrote`, `theywrote`, b.path as `img` FROM `person` a JOIN upload b ON b.ID=a.img WHERE', [
+            'a.cat' => $group
+        ], 'ORDER BY a.`order` LIMIT ?', $limit);
+        foreach($res = $res->fetchAll() as &$item){
+            $item['wrote'] = func::link_to_knihovnycz($item['wrote']);
+            $item['theywrote'] = func::link_to_knihovnycz($item['theywrote']);
+        }
+        return $res;
     }
 }

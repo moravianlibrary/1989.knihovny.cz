@@ -4,21 +4,19 @@
     <div class="container">
         <h2 class="text-center">Osobnosti revoluce</h2>
         <div class="row people" n:if="count($people) > 0">
-            {dump $people}
-            {foreach $people as $item}
                 <div class="col-sm-12 col-md-6 person_detail">
                     <div class="ppl">
-                        <div class="media">
-                            <img class="profile" src="{$people[0]['img']}" alt="Osoba">
+                        <div class="media {if $iterator->first}active{/if}" n:foreach="$people as $person">
+                            <img class="profile" src="{$person['img']}" alt="Osoba">
                             <div class="media-body">
                                 <div class="title">
-                                    <h5 class="name">{$people[0]['name']}</h5>
-                                    <h6 class="date">{$people[0]['born']|date:'%j.%n.%Y'}{if !empty($people[0]['dead'])}-{$people[0]['dead']|date:'%j.%n.%Y'}{/if}, {$people[0]['job']}</h6>
+                                    <h5 class="name">{$person['name']}</h5>
+                                    <h6 class="date">{$person['born']|date:'%e. %m. %Y'}{if !empty($person['dead'])} - {$person['dead']|date:'%e. %m. %Y'}{/if}, {$person['job']}</h6>
                                 </div>
-                                <p>{$people[0]['desc']}
+                                <p>{$person['desc']}
                                 <ul class="control">
-                                    <li n:if="isset($people[0]['wrote'])"><a target="_blank" href="{$people[0]['wrote']}">Jsem autorem</a></li>
-                                    <li n:if="isset($people[0]['theywrote'])"><a target="_blank" href="{$people[0]['theywrote']}">Napsali o mně</a></li>
+                                    <li n:if="isset($person['wrote'])"><a target="_blank" href="{$person['wrote']}">Jsem autorem</a></li>
+                                    <li n:if="isset($person['theywrote'])"><a target="_blank" href="{$person['theywrote']}">Napsali o mně</a></li>
                                 </ul>
                                 </p>
                             </div>
@@ -28,13 +26,40 @@
                                 <img class="avatar" src="{$person['img']}">
                                 <div class="details">
                                     <h5 class="name">{$person['name']}</h5>
-                                    <h6 class="date">{$people[0]['born']|date:'%Y'}{if !empty($person['dead'])}-{$person['dead']|date:'%Y'}{/if}</h6>
+                                    <h6 class="date">{$person['born']|date:'%Y'}{if !empty($person['dead'])} - {$person['dead']|date:'%Y'}{/if}</h6>
                                 </div>
                             </li>
                         </ul>
                     </div>
                 </div>
-            {/foreach}
+                <div class="col-sm-12 col-md-6 person_detail">
+                    <div class="ppl dark">
+                        <div class="media {if $iterator->first}active{/if}" n:foreach="$notgood_ppl as $person">
+                            <img class="profile" src="{$person['img']}" alt="Osoba">
+                            <div class="media-body">
+                                <div class="title">
+                                    <h5 class="name">{$person['name']}</h5>
+                                    <h6 class="date">{$person['born']|date:'%e. %m. %Y'}{if !empty($person['dead'])} - {$person['dead']|date:'%e. %m. %Y'}{/if}, {$person['job']}</h6>
+                                </div>
+                                <p>{$person['desc']}
+                                <ul class="control">
+                                    <li n:if="isset($person['wrote'])"><a target="_blank" href="{$person['wrote']}">Jsem autorem</a></li>
+                                    <li n:if="isset($person['theywrote'])"><a target="_blank" href="{$person['theywrote']}">Napsali o mně</a></li>
+                                </ul>
+                                </p>
+                            </div>
+                        </div>
+                        <ul class="ppl-list" id="list-dark">
+                            <li class="item" n:foreach="$notgood_ppl as $person">
+                                <img class="avatar" src="{$person['img']}">
+                                <div class="details">
+                                    <h5 class="name">{$person['name']}</h5>
+                                    <h6 class="date">{$person['born']|date:'%Y'}{if !empty($person['dead'])} - {$person['dead']|date:'%Y'}{/if}</h6>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
         </div>
     </div>
 </section>
@@ -44,7 +69,9 @@
         <div class="bookshelf row" n:if="count($books) > 0">
             <div class="col-sm-4 item" n:foreach="$books as $book">
                 <a class="media" target="_blank" href="https://www.knihovny.cz/Record/{$book['record']}">
-                    <img class="cover" src="{$book['img']}" alt="Obálka knihy {$book['title']}">
+                    <div class="cover-container">
+                        <img class="cover" src="{$book['img']}" alt="Obálka knihy {$book['title']}">
+                    </div>
                     <div class="media-body">
                         <h5 class="title">{$book['title']|truncate:60}</h5>
                         <h6 class="yr">{$book['year']}</h6>
@@ -61,27 +88,19 @@
         <h2 class="text-center"><span>Naše vzpomínky</span></h2>
         <div class="row">
             <div class="col-lg-6 video-block big">
-                {block video-block}
-                    <iframe src="{$videos[0][0]}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="content">
-                        <h3>{$videos[0][1]}</h3>
-                        <p class="author">Zdroj: Česká Televize</p>
-                        <p>Vivamus metus urna, fringilla vitae lorem quis, mollis dapibus mauris. Vivamus et leo urna. Sed et varius tortor. Ut eu odio justo. Maecenas ex mi, laoreet at imperdiet a, laoreet eu orci. Nam cursus rhoncus leo vel commodo. Nullam sodales viverra tortor, et ultricies libero porta elementum.</p>
-                    </div>
-                {/block}
+                <iframe src="{$videos[0][0]}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="content">
+                    <h3>{$videos[0][1]}</h3>
+                    <p class="author">{$videos[0][2]}</p>
+                    <p>{$videos[0][3]}</p>
+                </div>
             </div>
-            <div class="col-lg-6">
-                <div class="row">
-                    <div n:foreach="[$videos[1], $videos[2]] as $video" class="col-lg-6 video-block">
-                        <iframe src="{$video[0]}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                        <div class="content">
-                            <h3>{$video[1]}</h3>
-                            <p class="author">{$video[2]}</p>
-                            <p>{$video[3]}</p>
-                        </div>
-                    </div>
-
-                    <p></p>
+            <div n:foreach="[$videos[1], $videos[2]] as $video" class="col-lg-3 video-block">
+                <iframe src="{$video[0]}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="content">
+                    <h3>{$video[1]}</h3>
+                    <p class="author">{$video[2]}</p>
+                    <p>{$video[3]}</p>
                 </div>
             </div>
         </div>
@@ -128,7 +147,9 @@
             <div class="col-sm-6 col-md-4 col-lg-3 item" n:foreach="$books as $book">
                 {continueIf $iterator->counter > 8}
                 <a class="media" target="_blank" href="https://www.knihovny.cz/Record/{$book['record']}">
-                    <img class="cover" src="{$book['img']}" alt="Obálka knihy {$book['title']}">
+                    <div class="cover-container">
+                        <img class="cover" src="{$book['img']}" alt="Obálka knihy {$book['title']}">
+                    </div>
                     <div class="media-body">
                         <h5 class="title">{$book['title']}</h5>
                         <h6 class="author">{$book['author']}</h6>

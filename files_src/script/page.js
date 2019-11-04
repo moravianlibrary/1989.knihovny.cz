@@ -9,6 +9,8 @@ var config = {
     "autoplay": true,
 };
 tns(config);
+config.container = "#list-dark";
+tns(config);
 
 jQuery(document).ready(function () {
 

@@ -68,27 +68,6 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
 
         $this->template->books = $this->book->get_books('REVOLUCE');
 
-        $books = [
-            [
-                'img' => $this->files->get_files_by_ID(119)[0]['path'],
-                'title' => 'Zvonění klíčů',
-                'author' => 'Jiří Slavíček',
-                'record' => 'mzk.MZK01-000922762'
-            ],
-            [
-                'img' => $this->files->get_files_by_ID(120)[0]['path'],
-                'title' => 'Téma: Alexander Dubček',
-                'author' => 'Antonín Benčík',
-                'record' => 'nkp.NKC01-002389711'
-            ],
-            [
-                'img' => $this->files->get_files_by_ID(121)[0]['path'],
-                'title' => 'Muž nad stolem, aneb, Byl jsem Štrougalovým poradcem',
-                'author' => 'Jaromír Sedlák',
-                'record' => 'svkpk.PNA01-000537283'
-            ]
-        ];
-
         $periodicals = [
             [
                 'title' => 'Rudé právo XI.',
@@ -140,9 +119,9 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
 
         $this->template->photo = $this->files->get_files_by_dir('/files/img/foto');
 
-        $this->template->people = $this->people->get_person_by_ID([ 1 ]);
+        $this->template->people = $this->people->get_rand_people_from_group('GOOD', 8);
 
-        $this->template->notgood_ppl = $this->people->get_person_by_ID([ 1 ]);
+        $this->template->notgood_ppl = $this->people->get_rand_people_from_group('BAD', 8);
 
         $this->template->links = [
             'https://www.knihovny.cz/Record/auth.AUT10-000038323' => 'Pavel Tigrid',

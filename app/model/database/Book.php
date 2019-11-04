@@ -18,8 +18,8 @@ class Book {
     }
 
 
-    function get_books($cat, $limit = 5){
-        $res = $this->db->query('SELECT a.`year`,a.`title`,a.`author`,a.`record`,b.`path` as img FROM `books` a JOIN `upload` b ON a.`cover`=b.`ID` WHERE `cat`=? LIMIT ?', $cat, $limit);
+    function get_books($cat, $limit = 6){
+        $res = $this->db->query('SELECT a.`year`,a.`title`,a.`author`,a.`record`,b.`path` as img FROM `books` a JOIN `upload` b ON a.`cover`=b.`ID` WHERE `cat`=? ORDER BY RAND() LIMIT ?', $cat, $limit);
         return $res->fetchAll();
     }
 }
