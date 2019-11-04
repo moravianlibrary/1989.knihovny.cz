@@ -4,3 +4,4 @@ temp/
 vendor/
 node_modules/
 files_src/navrh/
+/package-lock.json
