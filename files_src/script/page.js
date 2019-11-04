@@ -12,7 +12,7 @@ tns(config);
 
 jQuery(document).ready(function () {
 
-    var disableRightClick = function(e){
+    var disableRightClick = function (e) {
         e.preventDefault();
     }
 

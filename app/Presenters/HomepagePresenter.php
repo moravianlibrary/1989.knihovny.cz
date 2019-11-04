@@ -27,6 +27,21 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
             'id' => 'carouselExampleControls'
         ]);
 
+        $this->template->videos = [
+            [ 'https://www.youtube.com/embed/wpA2jYCl4EA',
+                'Vzpomínky Mileny Štěpánkové',
+                'Popisek osoby',
+                'Milena Štěpánková je dlouholetá pracovnice Moravské zemské knihovny a jedna z pamětnic dění v knihovně v období sametové revoluce. „V knihovně se to odstartovalo seznámením s peticí Několik vět. S tou jsme chtěli seznámit co nejširší veřejnost, důvěryhodné známé,“ vzpomíná na první náznaky blížící se změny režimu.'],
+            [ 'https://www.youtube.com/embed/lTbW-vdz8Ag',
+                'Vzpomínky Jaromíra Kubíčka',
+                'Krátky popisek',
+                'Jaromír Kubíček je celoživotní knihovník, který v době sametové revoluce působil jako ředitel Moravské zemské knihovny a dodnes s knihovnou spolupracuje. „Já byl divákem. V knihovně se všechno hýbalo, lidé se scházeli na schůzích. Bylo to bouřlivé. Já byl spíš pozorovatel toho, co se děje, než abych do něčeho zasahoval,“ popisuje překotné dění roku 1989.'],
+            [ 'https://www.youtube.com/embed/74eRzJ9wAQg',
+                'Vzpomínky Věry Jelínkové',
+                'Popis osoby',
+                'Věra Jelínková působila v roce 1989 jako ředitelka jedné z částí dnešní Moravské zemské knihovny, a sice Státní vědecké knihovny. Patří mezi pamětníky režimů, které se lámaly právě při sametové revoluci. "Ve většině případů to byla beletrie autorů, kteří buď emigrovali nebo byli obsahově nežádoucí," říká o zakázané literatuře, kterou knihovna archivovala od roku 1973.']
+        ];
+
         $res = $this->files->get_files_by_ID([ 6, 9, 12, 15, 18 ]);
         if(is_array($res)) {
             for($i = 0; $i < count($res); $i++) {
@@ -97,9 +112,9 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
             ]
         ];
 
-        foreach($periodicals as &$paper){
+        foreach($periodicals as &$paper) {
             $items = [];
-            foreach($paper['items'] as $item){
+            foreach($paper['items'] as $item) {
                 $items[] = [
                     'href' => $item['path'],
                     'title' => $item['title']
@@ -114,9 +129,9 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
 
         $this->template->photo = $this->files->get_files_by_dir('/files/img/foto');
 
-        $this->template->people = $this->people->get_person_by_ID([1]);
+        $this->template->people = $this->people->get_person_by_ID([ 1 ]);
 
-        $this->template->notgood_ppl = $this->people->get_person_by_ID([1]);
+        $this->template->notgood_ppl = $this->people->get_person_by_ID([ 1 ]);
 
         $this->template->links = [
             'https://www.knihovny.cz/Record/auth.AUT10-000038323' => 'Pavel Tigrid',

@@ -43,17 +43,29 @@
 
 <div class="row">
     <h2 class="text-center">Naše vzpomínky</h2>
-    <div class="col-lg-6 video-block">
+    <div class="col-lg-6 video-block big">
         {block video-block}
-            <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fressources.blogdumoderateur.com%2F2016%2F09%2Fyoutube-1.jpg&f=1&nofb=1">
+            <iframe src="{$videos[0][0]}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             <div class="content">
-            <h3>Lorem ipsum</h3>
+            <h3>{$videos[0][1]}</h3>
             <p class="author">Zdroj: Česká Televize</p>
             <p>Vivamus metus urna, fringilla vitae lorem quis, mollis dapibus mauris. Vivamus et leo urna. Sed et varius tortor. Ut eu odio justo. Maecenas ex mi, laoreet at imperdiet a, laoreet eu orci. Nam cursus rhoncus leo vel commodo. Nullam sodales viverra tortor, et ultricies libero porta elementum.</p>
         </div>
         {/block}
     </div>
-    <div n:foreach="[a,b] as $l" class="col-sm-6 col-lg-3 video-block">{include video-block}</div>
+    <div class="col-lg-6">
+        <div class="row">
+            <div n:foreach="[$videos[1], $videos[2]] as $video" class="col-lg-6 video-block">
+                <iframe src="{$video[0]}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                <div class="content">
+                <h3>{$video[1]}</h3>
+                <p class="author">{$video[2]}</p>
+                <p>{$video[3]}</p>
+            </div>
+        </div>
+
+            <p></p>
+    </div>
 </div>
 <div class="row gallery">
     <div class="col-xs-6 col-lg-4 col-xl-2 item" n:foreach="$photo as $pic">
