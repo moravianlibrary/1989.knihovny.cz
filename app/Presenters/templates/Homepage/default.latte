@@ -92,11 +92,31 @@
     <div class="container">
         <h2 class="text-center"><span>Fotogalerie</span></h2>
         <div class="row gallery">
-            <div class="col-xs-6 col-lg-4 col-xl-2 item" n:foreach="$photo as $pic">
-                <a rel="gallery" href="{$pic['path']}" title="Odkaz na velkou fotografii {$pic['title']}">
-                    <img src="{$pic['path']}" title="{$pic['title']}">
-                </a>
+            {foreach $photo as $pic}
+                {if $iterator->getCounter() <= 8}
+                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 item">
+                        <a rel="gallery" href="{$pic['path']}" title="Odkaz na velkou fotografii {$pic['title']}">
+                            <img src="{$pic['path']}" title="{$pic['title']}">
+                        </a>
+                    </div>
+                {/if}
+            {/foreach}
+        </div>
+        <div class="collapse" id="collapsePhotogallery">
+            <div class="row gallery">
+                {foreach $photo as $pic}
+                    {if $iterator->getCounter() > 8}
+                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 item">
+                            <a rel="gallery" href="{$pic['path']}" title="Odkaz na velkou fotografii {$pic['title']}">
+                                <img src="{$pic['path']}" title="{$pic['title']}">
+                            </a>
+                        </div>
+                    {/if}
+                {/foreach}
             </div>
+        </div>
+        <div class="mt-2">
+            <a class="btn btn-block btn-light" data-toggle="collapse" href="#collapsePhotogallery" role="button" aria-expanded="false" aria-controls="collapsePhotogallery">Zobrazit více fotografií</a>
         </div>
     </div>
 </section>
