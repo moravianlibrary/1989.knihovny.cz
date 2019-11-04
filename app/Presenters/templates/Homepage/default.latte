@@ -134,7 +134,49 @@
 
 <section>
     <div class="container">
-        <button type="button" class="btn btn-primary single">Vyzkoušejte své znalosti v krátkém kvízu.</button>
+        <h2 class="text-center"><span>Další zdroje</span></h2>
+        <div class="row">
+            <div class="col-lg-3">
+                <h4><i class="fa fa-newspaper-o"></i> Texty</h4>
+                <ul class="list-group list-group-flush">
+                    {foreach $sources as $source}
+                        <li class="list-group-item">
+                            <a href="{$source->link}">{$source->title}</a>
+                        </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <h4><i class="fa fa-book"></i> Knihy</h4>
+                <ul class="list-group list-group-flush">
+                    {foreach $sources as $source}
+                        <li class="list-group-item">
+                            <a href="{$source->link}">{$source->title}</a>
+                        </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <h4><i class="fa fa-play-circle"></i> Videa</h4>
+                <ul class="list-group list-group-flush">
+                    {foreach $sources as $source}
+                        <li class="list-group-item">
+                            <a href="{$source->link}">{$source->title}</a>
+                        </li>
+                    {/foreach}
+                </ul>
+            </div>
+            <div class="col-lg-3">
+                <h4><i class="fa fa-link"></i> Ostatní</h4>
+                <ul class="list-group list-group-flush">
+                    {foreach $sources as $source}
+                        <li class="list-group-item">
+                            <a href="{$source->link}">{$source->title}</a>
+                        </li>
+                    {/foreach}
+                </ul>
+            </div>
+        </div>
     </div>
 </section>
 

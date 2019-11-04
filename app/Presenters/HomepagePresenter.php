@@ -151,5 +151,9 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
             'https://www.knihovny.cz/Record/auth.AUT10-000047615' => 'Olga Havlová',
             'https://www.knihovny.cz/Record/auth.AUT10-000004550' => 'Jiří Černý'
         ];
+
+        $sources = $this->database->table('sources')
+            ->fetchAll();
+        $this->template->sources = $sources;
     }
 }
