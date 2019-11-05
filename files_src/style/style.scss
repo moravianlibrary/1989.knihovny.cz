@@ -183,7 +183,6 @@ main {
       }
 
       h5.name {
-        white-space: nowrap;
         margin: 0;
         border: none;
       }
@@ -240,12 +239,14 @@ main {
         overflow: hidden;
         white-space: nowrap;
 
-        li {
+        li.item {
           display: inline-block;
           padding: 0 4px;
-
           img.avatar {
             width: 80px;
+          }
+          .details{
+            margin:5px 0;
           }
         }
       }

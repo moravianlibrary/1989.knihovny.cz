@@ -5,7 +5,7 @@
         <h2 class="text-center">Osobnosti revoluce</h2>
         <div class="row people" n:if="count($people) > 0">
                 <div class="col-sm-12 col-md-6 person_detail">
-                    <div class="ppl">
+                    <div class="ppl good">
                         <div n:foreach="$people as $person" id="person-good-{$iterator->counter}" class="media {if $iterator->first}active{/if}">
                             <img class="profile" src="{$person['img']}" alt="Osoba">
                             <div class="media-body">

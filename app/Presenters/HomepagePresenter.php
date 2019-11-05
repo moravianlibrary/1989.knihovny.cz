@@ -134,5 +134,11 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
         $sources = $this->database->table('sources')
             ->fetchAll();
         $this->template->sources = $sources;
+
+        foreach ($this->files->scan_tree('files/img/osoby') as $item){
+            //add all files from dir
+            //$this->files->add_file($item);
+        }
+
     }
 }
