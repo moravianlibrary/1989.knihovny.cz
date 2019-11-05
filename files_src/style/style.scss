@@ -2,11 +2,17 @@
 @import "bootstrap";
 
 html {
+  scroll-behavior: smooth;
   font-size: 14px;
 
   p:last-of-type {
     margin-bottom: 0;
   }
+}
+
+body {
+  position: relative;
+  overflow-y: auto;
 }
 
 .lead {
@@ -385,4 +391,14 @@ h2 {
   span {
     border-bottom: 5px solid $gray-200;
   }
+}
+
+nav.navbar {
+  font-size: 1.2em;
+  border-bottom: 3px solid #08437f;
+
+  .nav-link.active{
+    background-color: #ffffff;
+  }
+
 }

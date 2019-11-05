@@ -14,8 +14,8 @@
 
 </head>
 
-<body>
-<header class='container-fluid no-padd'>
+<body data-spy="scroll" data-target="#navbarSupportedContent" data-offset="70">
+<header class="container-fluid no-padd" id="uvod">
     <div class="row header flex-lg-column-reverse">
         {$carousel|noescape}
         <div class="col-lg-6">
@@ -43,17 +43,29 @@
 
     <div class="container collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="#">Úvod<span class="sr-only">(current)</span></a>
-            </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Zdroje</a>
+                <a class="nav-link" href="#uvod">Úvod</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Osobnosti</a>
+                <a class="nav-link" href="#osobnosti" title="Osobnosti revoluce">Osobnosti</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#zivotopisy" title="Životopisy osobností">Životopisy</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#vzpominky" title="Vzpomínky na revoluci">Vzpomínky</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#fotogalerie" title="Fotogalerie">Fotogalerie</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#knihy" title="Knihy o revoluci">Knihy</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link" href="#psalo-se" title="Co se psalo v tisku">Psalo se</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">Další odkazy</a>
+                <a class="nav-link" href="#zdroje" title="Další zdroje">Zdroje</a>
             </li>
         </ul>
     </div>
