@@ -177,10 +177,11 @@ main {
         color: whitesmoke;
         border: none;
 
-        a{
-          color:orangered;
-          &:hover{
-            color:orange;
+        a {
+          color: orangered;
+
+          &:hover {
+            color: orange;
           }
         }
 
@@ -253,11 +254,13 @@ main {
         li.item {
           display: inline-block;
           padding: 0 4px;
+
           img.avatar {
             width: 80px;
           }
-          .details{
-            margin:5px 0;
+
+          .details {
+            margin: 5px 0;
           }
         }
       }
@@ -420,9 +423,10 @@ h2 {
 
 nav.navbar {
   font-size: 1.2em;
-  border-bottom: 3px solid #08437f;
+  border-top: 3px solid white;
+  border-bottom: 3px solid $color-cr-red;
 
-  .nav-link.active{
+  .nav-link.active {
     background-color: #ffffff;
   }
 
