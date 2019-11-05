@@ -9,19 +9,19 @@ html {
   }
 }
 
-.lead{
+.lead {
   font-weight: 400;
   font-size: 1.35rem;
 }
 
-h1.display-1{
+h1.display-1 {
   font-size: 4rem;
 
-  strong{
+  strong {
     font-weight: bold;
   }
 
-  small{
+  small {
     font-size: 60%;
     color: $gray-600;
   }
@@ -117,10 +117,17 @@ main {
           border-color: #a6bfd8;
         }
 
-        img.cover {
+        .cover-container {
           width: 100px;
-          margin-right: 5px;
+          height: 130px;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            margin-right: 5px;
+          }
         }
+
 
         .media-body {
           padding: .5em;
@@ -159,6 +166,13 @@ main {
         color: whitesmoke;
         border: none;
 
+        a{
+          color:orangered;
+          &:hover{
+            color:orange;
+          }
+        }
+
         h6.date {
           color: #DDD;
         }
@@ -169,7 +183,6 @@ main {
       }
 
       h5.name {
-        white-space: nowrap;
         margin: 0;
         border: none;
       }
@@ -182,6 +195,12 @@ main {
       .media {
         margin-bottom: .5em;
         border-bottom: 1px solid gray;
+        min-height: 275px;
+        display: none;
+
+        &.active {
+          display: flex;
+        }
 
         .media-body {
           padding: .25em .5em;
@@ -220,12 +239,14 @@ main {
         overflow: hidden;
         white-space: nowrap;
 
-        li {
+        li.item {
           display: inline-block;
           padding: 0 4px;
-
           img.avatar {
             width: 80px;
+          }
+          .details{
+            margin:5px 0;
           }
         }
       }

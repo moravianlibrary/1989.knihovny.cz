@@ -5,7 +5,11 @@ module.exports = function (grunt) {
             style: {
                 files: ['files_src/style/**/*.scss'],
                 tasks: ['sass:dist'],
-            }
+            },
+		script:{
+			files: ['files_src/script/**/*.js'],
+			tasks: ['uglify:ugly']
+		}
         },
         sass: {
             dist: {
@@ -32,7 +36,7 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks('grunt-contrib-uglify');
     grunt.loadNpmTasks('grunt-contrib-sass');
 
-    grunt.registerTask('default', ['watch:style']);
+    grunt.registerTask('default', ['watch']);
     grunt.registerTask('style', ['sass:dist']);
     grunt.registerTask('script', ['uglify']);
 
