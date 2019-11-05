@@ -367,11 +367,31 @@ main {
 footer {
   margin: 2em 0 0;
   background: $gray-900;
-  color: white;
+  color: $gray-300;
 
-  div.container {
-    padding: 1em;
-    text-align: center;
+  a {
+    color: white;
+  }
+
+  a:hover {
+    color: white;
+  }
+
+  .footer-bottom {
+    background: black;
+  }
+}
+
+.footer-logo {
+  display: block;
+  margin: 2em 1em;
+
+  a {
+    display: block;
+
+    img {
+      display: block;
+    }
   }
 }
 
