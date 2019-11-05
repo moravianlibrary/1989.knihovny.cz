@@ -1,5 +1,5 @@
-run: html/index.php
-	php -S localhost:8000 -t html/
+run: www/index.php
+	php -S localhost:8000 -t www/
 compile:
 	grunt style && grunt script
 prepare:

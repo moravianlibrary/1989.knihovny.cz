@@ -6,7 +6,7 @@
         <div class="row people" n:if="count($people) > 0">
                 <div class="col-sm-12 col-md-6 person_detail">
                     <div class="ppl">
-                        <div class="media {if $iterator->first}active{/if}" n:foreach="$people as $person">
+                        <div n:foreach="$people as $person" id="person-good-{$iterator->counter}" class="media {if $iterator->first}active{/if}">
                             <img class="profile" src="{$person['img']}" alt="Osoba">
                             <div class="media-body">
                                 <div class="title">
@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <ul class="ppl-list" id="list">
-                            <li class="item" n:foreach="$people as $person">
+                            <li n:foreach="$people as $person" class="item" data-target="person-good-{$iterator->counter}">
                                 <img class="avatar" src="{$person['img']}">
                                 <div class="details">
                                     <h5 class="name">{$person['name']}</h5>
