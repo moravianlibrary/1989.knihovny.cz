@@ -413,8 +413,9 @@ section:nth-child(even) {
 }
 
 h2 {
-
   margin-bottom: 2rem;
+  text-transform: uppercase;
+  font-weight: 400;
 
   span {
     border-bottom: 5px solid $gray-200;
@@ -423,6 +424,7 @@ h2 {
 
 nav.navbar {
   font-size: 1.2em;
+  text-transform: uppercase;
   border-top: 3px solid white;
   border-bottom: 3px solid $color-cr-red;
 
