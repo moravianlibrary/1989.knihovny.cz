@@ -2,11 +2,17 @@
 @import "bootstrap";
 
 html {
+  scroll-behavior: smooth;
   font-size: 14px;
 
   p:last-of-type {
     margin-bottom: 0;
   }
+}
+
+body {
+  position: relative;
+  overflow-y: auto;
 }
 
 .lead {
@@ -67,6 +73,11 @@ header {
         }
       }
     }
+  }
+
+  .header-inner {
+    padding-left: 2rem;
+    padding-bottom: 3rem;
   }
 
 }
@@ -356,11 +367,31 @@ main {
 footer {
   margin: 2em 0 0;
   background: $gray-900;
-  color: white;
+  color: $gray-300;
 
-  div.container {
-    padding: 1em;
-    text-align: center;
+  a {
+    color: white;
+  }
+
+  a:hover {
+    color: white;
+  }
+
+  .footer-bottom {
+    background: black;
+  }
+}
+
+.footer-logo {
+  display: block;
+  margin: 2em 1em;
+
+  a {
+    display: block;
+
+    img {
+      display: block;
+    }
   }
 }
 
@@ -385,4 +416,14 @@ h2 {
   span {
     border-bottom: 5px solid $gray-200;
   }
+}
+
+nav.navbar {
+  font-size: 1.2em;
+  border-bottom: 3px solid #08437f;
+
+  .nav-link.active{
+    background-color: #ffffff;
+  }
+
 }

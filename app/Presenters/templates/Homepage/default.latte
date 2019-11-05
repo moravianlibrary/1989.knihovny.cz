@@ -1,8 +1,8 @@
 {block content}
 
-<section>
+<section id="osobnosti">
     <div class="container">
-        <h2 class="text-center">Osobnosti revoluce</h2>
+        <h2 class="text-center"><span>Osobnosti revoluce</span></h2>
         <div class="row people" n:if="count($people) > 0">
                 <div class="col-sm-12 col-md-6 person_detail">
                     <div class="ppl good">
@@ -64,8 +64,9 @@
     </div>
 </section>
 
-<section>
+<section id="zivotopisy">
     <div class="container">
+        <h2 class="text-center"><span>Životopisy osobností</span></h2>
         <div class="bookshelf row" n:if="count($books) > 0">
             <div class="col-sm-4 item" n:foreach="$books as $book">
                 <a class="media" target="_blank" href="https://www.knihovny.cz/Record/{$book['record']}">
@@ -83,7 +84,7 @@
     </div>
 </section>
 
-<section>
+<section id="vzpominky">
     <div class="container">
         <h2 class="text-center"><span>Naše vzpomínky</span></h2>
         <div class="row">
@@ -107,7 +108,7 @@
     </div>
 </section>
 
-<section>
+<section id="fotogalerie">
     <div class="container">
         <h2 class="text-center"><span>Fotogalerie</span></h2>
         <div class="row gallery">
@@ -140,7 +141,7 @@
     </div>
 </section>
 
-<section>
+<section id="knihy">
     <div class="container">
         <h2 class="text-center"><span>Knihy o revoluci</span></h2>
         <div class="bookshelf slide row" n:if="count($books) > 0">
@@ -160,7 +161,7 @@
     </div>
 </section>
 
-<section>
+<section id="psalo-se">
     <div class="container">
         <h2 class="text-center"><span>Co se psalo v tisku</span></h2>
         <div class="row periodicals gallery">
@@ -174,7 +175,7 @@
     </div>
 </section>
 
-<section>
+<section id="zdroje">
     <div class="container">
         <h2 class="text-center"><span>Další zdroje</span></h2>
         <div class="row">
@@ -222,7 +223,7 @@
     </div>
 </section>
 
-<section>
+<section id="kviz">
     <div class="container text-center">
         <a class="btn btn-lg btn-block btn-primary" href="#">Vyzkoušejte své znalosti v krátkém kvízu</a>
     </div>
