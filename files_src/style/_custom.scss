@@ -149,6 +149,26 @@ main {
           }
         }
       }
+
+      &.other {
+        text-align: center;
+
+        .btn {
+          font-size: 1.5em;
+          padding: .4em 1em;
+          margin: 20px;
+          text-align: center;
+
+          @include media-breakpoint-up(md){
+            margin:35px;
+          }
+
+          img {
+            display: block;
+            margin: 10px auto 0;
+          }
+        }
+      }
     }
   }
 
@@ -204,7 +224,7 @@ main {
       .media {
         margin-bottom: .5em;
         border-bottom: 1px solid gray;
-        min-height: 275px;
+        min-height: 26em;
         display: none;
 
         &.active {
@@ -226,8 +246,8 @@ main {
             }
           }
 
-          img {
-            width: 200px;
+          img.profile {
+            width: 20px;
             float: left;
           }
 
