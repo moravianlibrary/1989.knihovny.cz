@@ -123,7 +123,7 @@
         <h2 class="text-center"><span>Fotogalerie</span></h2>
         <div class="row gallery">
             <div n:foreach="$photo as $pic" class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 item">
-                {breakIf $iterator->counter <= 8}
+                {breakIf $iterator->counter > 8}
                 <a rel="gallery" class="fancybox" href="{$pic['path']}" title="Odkaz na velkou fotografii {$pic['title']}">
                     <img src="{$pic['path']}" title="{$pic['title']}">
                 </a>
