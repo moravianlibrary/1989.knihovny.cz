@@ -34,7 +34,7 @@
             </div>
             <div class="col-sm-12 col-md-6 person_detail">
                 <div class="ppl dark">
-                    <div class="media {if $iterator->first}active{/if}" n:foreach="$notgood_ppl as $person">
+                    <div n:foreach="$notgood_ppl as $person" id="person-bad-{$iterator->counter}" class="media {if $iterator->first}active{/if}">
                         <img class="profile" src="{$person['img']}" alt="Osoba">
                         <div class="media-body">
                             <div class="title">
@@ -50,7 +50,7 @@
                         </div>
                     </div>
                     <ul class="ppl-list" id="list-dark">
-                        <li class="item" n:foreach="$notgood_ppl as $person">
+                        <li n:foreach="$notgood_ppl as $person" class="item" data-target="person-bad-{$iterator->counter}">
                             <img class="avatar" src="{$person['img']}">
                             <div class="details">
                                 <h5 class="name">{$person['name']}</h5>
@@ -122,26 +122,21 @@
     <div class="container">
         <h2 class="text-center"><span>Fotogalerie</span></h2>
         <div class="row gallery">
-            {foreach $photo as $pic}
-                {if $iterator->getCounter() <= 8}
-                    <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 item">
-                        <a rel="gallery" href="{$pic['path']}" title="Odkaz na velkou fotografii {$pic['title']}">
-                            <img src="{$pic['path']}" title="{$pic['title']}">
-                        </a>
-                    </div>
-                {/if}
-            {/foreach}
+            <div n:foreach="$photo as $pic" class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 item">
+                {breakIf $iterator->counter > 8}
+                <a rel="gallery" class="fancybox" href="{$pic['path']}" title="Odkaz na velkou fotografii {$pic['title']}">
+                    <img src="{$pic['path']}" title="{$pic['title']}">
+                </a>
+            </div>
         </div>
         <div class="collapse" id="collapsePhotogallery">
             <div class="row gallery">
                 {foreach $photo as $pic}
-                    {if $iterator->getCounter() > 8}
-                        <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 item">
+                        <div if="$iterator->getCounter() > 8" class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 item">
                             <a rel="gallery" href="{$pic['path']}" title="Odkaz na velkou fotografii {$pic['title']}">
                                 <img src="{$pic['path']}" title="{$pic['title']}">
                             </a>
                         </div>
-                    {/if}
                 {/foreach}
             </div>
         </div>
@@ -175,7 +170,7 @@
     <div class="container">
         <h2 class="text-center"><span>Co se psalo v tisku</span></h2>
         <div class="row periodicals gallery">
-            <div class="col-sm-4 col-lg-2 item" n:foreach="$periodicals as $obalka">
+            <div n:if="count($periodicals) > 0" n:foreach="$periodicals as $obalka" class="col-sm-4 col-lg-2 item">
                 <div class="cover">
                     <img src="{$obalka['path']}" data-gallery="{$obalka['items']}">
                 </div>

@@ -13,8 +13,15 @@ tns(config);
 $.fn.pplSlider = function (e) {
     $(this).each(function () {
         var that = $(this);
-        $(this).find('.tns-outer .ppl-list .item').click(function (e) {
+        var ID = that.find('.ppl-list').attr('id');
+        if (ID != 'undefined') {
+            config.container = '#' + ID;
+            tns(config);
+        }
+
+        that.find('.tns-outer .ppl-list .item').click(function (e) {
             var next = that.find('#' + $(this).data('target')).addClass('active');
+            console.log(next);
             if (next.length == 1) {
                 that.find('.media.active').removeClass('active');
                 that.find('#' + $(this).data('target')).addClass('active');
@@ -36,4 +43,6 @@ jQuery(document).ready(function () {
         $.fancybox();
         $.fancybox.open(gallery);
     });
+
+    $('.row.gallery a.fancybox').fancybox();
 });
