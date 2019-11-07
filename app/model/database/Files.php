@@ -19,7 +19,7 @@ class Files {
         $files = [];
         for($dir = opendir($path); $entry = readdir($dir);) {
             if(!in_array($entry, [ '.', '..' ]) && is_dir($path . '/' . $entry)) {
-                $files = array_merge($files, $this->scan_tree($path . $entry));
+                $files = array_merge($files, $this->scan_tree($path .'/'. $entry));
             } elseif(is_file($path . '/' . $entry)) {
                 $files[] = $path . '/' . $entry;
             }
@@ -53,7 +53,7 @@ class Files {
     }
 
     function get_files_by_dir(string $dirName){
-        $res = $this->db->query('SELECT * FROM `upload` WHERE `path` LIKE ?', "%$dirName%", 'ORDER BY `order`');
+        $res = $this->db->query('SELECT * FROM `upload` WHERE `path` LIKE ?', "$dirName%", 'ORDER BY `order`, `path`');
         return $res->fetchAll();
     }
 }
