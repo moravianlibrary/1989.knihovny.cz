@@ -1,6 +1,3 @@
-@import "var";
-@import "bootstrap";
-
 html {
   scroll-behavior: smooth;
   font-size: 14px;
@@ -433,3 +430,8 @@ nav.navbar {
   }
 
 }
+
+.fancybox-overlay{
+  background: rgba(44,44,44,0.9);
+}
+
