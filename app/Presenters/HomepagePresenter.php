@@ -110,7 +110,7 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
                     'title' => $item['title']
                 ];
             }
-            $paper['path'] = $this->files->get_files_by_dir($paper['cover'])[0]['path'];
+            $paper['path'] = $this->files->get_files_by_dir($paper['cover'])[0]['path'] ?? null;
             //encode other image data with JSON
             $paper['items'] = json_encode($items);
         }
