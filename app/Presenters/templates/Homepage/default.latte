@@ -1,3 +1,37 @@
+{define card_book}
+    {var $href = 'https://www.knihovny.cz/Record/' . $item['record']}
+    <div class="col-12 col-md-6 col-lg-4">
+        <div class="card mb-4 card-book">
+            <div class="row no-gutters">
+                <div class="col-4 text-center bg-light border-right">
+                    <a href="{$href}" title="Zobrazit knihu {$item['title']}" target="_blank">
+                        <img src="{$item['img']}" class="card-img" alt="Obálka knihy {$item['title']}">
+                    </a>
+                </div>
+                <div class="col-8">
+                    <div class="card-body">
+                        <h5 class="card-title mb-0">
+                            <a href="{$href}" title="Zobrazit knihu {$item['title']}" target="_blank">
+                                {$item['title']|truncate:60}
+                            </a>
+                        </h5>
+                        <p class="card-text">
+                            <em>{$item['year']}</em>
+                            <br>
+                            {$item['author']}
+                        </p>
+                    </div>
+                    <div class="card-footer text-right">
+                        <a class="btn btn-sm btn-outline-primary" href="{$href}" title="Zobrazit knihu {$item['title']}" target="_blank">
+                            <i class="fa fa-book"></i> Zobrazit knihu
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{/define}
+
 {block content}
 
 <section id="osobnosti">
@@ -68,26 +102,9 @@
     <div class="container">
         <h2 class="text-center"><span>Životopisy osobností</span></h2>
         <div class="row">
-                <div n:if="count($knihy['ZIVOTOPIS']) > 0" n:foreach="$knihy['ZIVOTOPIS'] as $book" class="col-12 col-md-6 col-lg-4">
-                    <div class="card mb-4">
-                        <div class="row no-gutters">
-                            <div class="col-4">
-                                <img src="{$book['img']}" class="card-img" alt="Obálka knihy {$book['title']}">
-                            </div>
-                            <div class="col-8">
-                                <div class="card-body">
-                                    <h5 class="card-title">
-                                        <a href="https://www.knihovny.cz/Record/{$book['record']}" target="_blank">
-                                            {$book['title']|truncate:60}
-                                        </a>
-                                    </h5>
-                                    <p class="card-text">{$book['year']}</p>
-                                    <p class="card-text">{$book['author']}</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            {foreach $knihy['ZIVOTOPIS'] as $book}
+                {include card_book, item => $book}
+            {/foreach}
         </div>
     </div>
 </section>
@@ -143,23 +160,20 @@
 <section id="knihy">
     <div class="container">
         <h2 class="text-center"><span>Knihy o revoluci</span></h2>
-        <div class="bookshelf slide row" n:if="count($knihy['REVOLUCE']) > 0">
-            <div class="col-sm-6 col-md-4 col-lg-3 item" n:foreach="$knihy['REVOLUCE'] as $book">
-                {continueIf $iterator->counter > 8}
-                <a class="media" target="_blank" href="https://www.knihovny.cz/Record/{$book['record']}">
-                    <div class="cover-container">
-                        <img class="cover" src="{$book['img']}" alt="Obálka knihy {$book['title']}">
+        <div class="row">
+            {foreach $knihy['REVOLUCE'] as $book}
+                {include card_book, item => $book}
+            {/foreach}
+            <div class="col-12 col-md-6 col-lg-4">
+                <div class="card card-book-more mb-4 bg-light">
+                    <div class="card-body text-center">
+                        <p>Další zdroje najdete na portálu</p>
+                        <a target="_blank" class="btn other" href="https://www.knihovny.cz/Search/Results?lookFor0[]=&type0[]=AllFields&bool0[]=AND&join=AND&searchTypeTemplate=basic&page=1&keepEnabledFilters=true&filter=JYOwzgDsBOCGAuwD2IBcAiAjATgBzYH0Jol5YBzFYMeAU3SA
+">
+                            <img src="{$basePath}/files/img/logo/logo-knihovny.cz.png" alt="Logo Knihovny.cz">
+                        </a>
                     </div>
-                    <div class="media-body">
-                        <h5 class="title">{$book['title']}</h5>
-                        <h6 class="author">{$book['author']}</h6>
-                    </div>
-                </a>
-            </div>
-            <div class="col-md-8 col-lg-6 item other">
-                <a target="_blank" class="btn other" href="https://www.knihovny.cz/Search/Results?lookFor0[]=&type0[]=AllFields&bool0[]=AND&join=AND&searchTypeTemplate=basic&page=1&keepEnabledFilters=true&filter=JYOwzgDsBOCGAuwD2IBcAiAjATgBzYH0Jol5YBzFYMeAU3SA
-">Další zdroje najdete na:
-                <img src="{$basePath}/files/img/logo/logo-knihovny.cz.png" alt="Logo Knihovny.cz"></a>
+                </div>
             </div>
         </div>
     </div>

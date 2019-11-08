@@ -457,3 +457,37 @@ nav.navbar {
   background: rgba(44, 44, 44, 0.9);
 }
 
+.card.card-book {
+  .card-body {
+    @include media-breakpoint-up(xs) {
+    }
+    @include media-breakpoint-up(sm) {
+    }
+    @include media-breakpoint-up(md) {
+      min-height: 162px;
+    }
+    @include media-breakpoint-up(lg) {
+      min-height: 140px;
+    }
+  }
+
+  .card-footer {
+    background: none;
+    border: none;
+  }
+}
+
+.card.card-book-more {
+  .card-body {
+    @include media-breakpoint-up(xs) {
+    }
+    @include media-breakpoint-up(sm) {
+    }
+    @include media-breakpoint-up(md) {
+      min-height: 210px;
+    }
+    @include media-breakpoint-up(lg) {
+      min-height: 188px;
+    }
+  }
+}
