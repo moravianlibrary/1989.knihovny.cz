@@ -65,7 +65,7 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
 
         $this->template->knihy = [
             'REVOLUCE' => $this->book->get_books('REVOLUCE', 5),
-            'ZIVOTOPIS' => $this->book->get_books('OSOBY')
+            'ZIVOTOPIS' => $this->book->get_books('OSOBY', 5)
         ];
 
 
