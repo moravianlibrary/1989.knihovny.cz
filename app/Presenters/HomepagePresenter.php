@@ -115,9 +115,9 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
 
         $this->template->photo = $this->files->get_files_by_dir('/files/img/foto');
 
-        $this->template->people = $this->people->get_rand_people_from_group('GOOD', 8);
+        $this->template->people = $this->people->get_rand_people_from_group('GOOD', 99);
 
-        $this->template->notgood_ppl = $this->people->get_rand_people_from_group('BAD', 8);
+        $this->template->notgood_ppl = $this->people->get_rand_people_from_group('BAD', 99);
 
         $sources = $this->database->table('sources')
             ->fetchAll();
