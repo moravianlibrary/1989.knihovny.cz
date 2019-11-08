@@ -64,7 +64,7 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
         $this->template->carousel = $carousel->render();
 
         $this->template->knihy = [
-            'REVOLUCE' => $this->book->get_books('REVOLUCE'),
+            'REVOLUCE' => $this->book->get_books('REVOLUCE', 5),
             'ZIVOTOPIS' => $this->book->get_books('OSOBY')
         ];
 
