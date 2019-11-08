@@ -27,14 +27,14 @@ class People {
         if(empty($ids)){
             return;
         }
-        $res = $this->db->query('SELECT `name`, `born`, `dead`, `job`, `desc`, `wrote`, `theywrote`, b.path as `img` FROM `person` a JOIN upload b ON b.ID=a.img WHERE',[
+        $res = $this->db->query('SELECT `name`, `born`, `dead`, `job`, `desc`, `wrote`, `theywrote`, COALESCE(b.path, "files/img/osoby/undefined.png") as `img` FROM `person` a JOIN upload b ON b.ID=a.img WHERE',[
             'a.ID' => $ids
         ]);
         return $res->fetchAll();
     }
 
     function get_rand_people_from_group($group, $limit = 8){
-        $res = $this->db->query('SELECT `name`, `born`, `dead`, `job`, `desc`, `wrote`, `theywrote`, b.path as `img` FROM `person` a JOIN upload b ON b.ID=a.img WHERE', [
+        $res = $this->db->query('SELECT `name`, `born`, `dead`, `job`, `desc`, `wrote`, `theywrote`, COALESCE(b.path, "files/img/osoby/undefined.png") as `img` FROM `person` a JOIN upload b ON b.ID=a.img WHERE', [
             'a.cat' => $group
         ], 'ORDER BY a.`order` LIMIT ?', $limit);
         foreach($res = $res->fetchAll() as &$item){
