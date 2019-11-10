@@ -44,5 +44,6 @@ jQuery(document).ready(function () {
         $.fancybox.open(gallery);
     });
 
-    $('.row.gallery a.fancybox').fancybox();
+    // photogallery fancybox
+    $("a.fancybox").attr('rel', 'photogallery').fancybox();
 });

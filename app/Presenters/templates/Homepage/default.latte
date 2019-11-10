@@ -150,24 +150,25 @@
 <section id="fotogalerie">
     <div class="container">
         <h2 class="text-center"><span>Fotogalerie</span></h2>
-        <div class="row gallery">
-            <div n:foreach="$photo as $pic" class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 item">
+
+        <div class="row text-center">
+            <div n:foreach="$photo as $pic" class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-3" style="max-height: 180px;">
                 {breakIf $iterator->counter > 8}
-                <a rel="gallery" class="fancybox" href="{$pic['path']}" title="Odkaz na velkou fotografii {$pic['title']}">
-                    <img src="{$pic['path']}" title="{$pic['title']}">
+                <a rel="photogallery" class="fancybox d-block h-100 border p-1 bg-white" href="{$pic['path']}">
+                    <img class="img-fluid h-100" src="{$pic['path']}" title="{$pic['title']}">
                 </a>
             </div>
         </div>
         <div class="collapse" id="collapsePhotogallery">
-            <div class="row gallery">
-                <div n:foreach="$photo as $pic" n:if="$iterator->counter > 8" class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 item">
-                    <a rel="gallery" href="{$pic['path']}" title="Odkaz na velkou fotografii {$pic['title']}">
-                        <img src="{$pic['path']}" title="{$pic['title']}">
+            <div class="row text-center">
+                <div n:foreach="$photo as $pic" n:if="$iterator->counter > 8" class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-3" style="max-height: 180px;">
+                    <a rel="photogallery" class="fancybox d-block h-100 border p-1 bg-white" href="{$pic['path']}">
+                        <img class="img-fluid h-100" src="{$pic['path']}" title="{$pic['title']}">
                     </a>
                 </div>
             </div>
         </div>
-        <div class="mt-2">
+        <div>
             <a class="btn btn-block btn-outline-primary" data-toggle="collapse" href="#collapsePhotogallery" role="button" aria-expanded="false" aria-controls="collapsePhotogallery">
                 <i class="fa fa-photo"></i> Zobrazit více fotografií
             </a>
