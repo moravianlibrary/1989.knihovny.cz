@@ -1,6 +1,6 @@
 <?php
 
-declare(strict_types=1);
+declare(strict_types = 1);
 
 namespace App\Presenters;
 
@@ -11,15 +11,20 @@ use App\Model\Book;
 use Nette;
 
 
-final class HomepagePresenter extends Nette\Application\UI\Presenter {
-    protected $files, $people, $book;
+final class HomepagePresenter extends Nette\Application\UI\Presenter
+{
+
+    protected $files;
+    protected $people;
+    protected $book;
 
     /**
      * @var \Nette\Database\Context
      */
     protected $database;
 
-    function __construct(Files $files, People $ppl, Book $book, Nette\Database\Context $database) {
+    public function __construct(Files $files, People $ppl, Book $book, Nette\Database\Context $database)
+    {
         parent::__construct();
 
         $this->files = $files;
@@ -28,7 +33,8 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
         $this->database = $database;
     }
 
-    function renderDefault() {
+    public function renderDefault()
+    {
 
         $carousel = new Carousel([
             'class' => 'slide carousel-fade col-lg-6',
@@ -36,27 +42,33 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
         ]);
 
         $this->template->videos = [
-            [ 'https://www.youtube.com/embed/wpA2jYCl4EA',
+            [
+                'https://www.youtube.com/embed/wpA2jYCl4EA',
                 'Vzpomínky Mileny Štěpánkové',
                 'Popisek osoby',
-                'Milena Štěpánková je dlouholetá pracovnice Moravské zemské knihovny a jedna z pamětnic dění v knihovně v období sametové revoluce. „V knihovně se to odstartovalo seznámením s peticí Několik vět. S tou jsme chtěli seznámit co nejširší veřejnost, důvěryhodné známé,“ vzpomíná na první náznaky blížící se změny režimu.' ],
-            [ 'https://www.youtube.com/embed/lTbW-vdz8Ag',
+                'Milena Štěpánková je dlouholetá pracovnice Moravské zemské knihovny a jedna z pamětnic dění v knihovně v období sametové revoluce. „V knihovně se to odstartovalo seznámením s peticí Několik vět. S tou jsme chtěli seznámit co nejširší veřejnost, důvěryhodné známé,“ vzpomíná na první náznaky blížící se změny režimu.'
+            ],
+            [
+                'https://www.youtube.com/embed/lTbW-vdz8Ag',
                 'Vzpomínky Jaromíra Kubíčka',
                 'Krátky popisek',
-                'Jaromír Kubíček je celoživotní knihovník, který v době sametové revoluce působil jako ředitel Moravské zemské knihovny a dodnes s knihovnou spolupracuje. „Já byl divákem. V knihovně se všechno hýbalo, lidé se scházeli na schůzích. Bylo to bouřlivé. Já byl spíš pozorovatel toho, co se děje, než abych do něčeho zasahoval,“ popisuje překotné dění roku 1989.' ],
-            [ 'https://www.youtube.com/embed/74eRzJ9wAQg',
+                'Jaromír Kubíček je celoživotní knihovník, který v době sametové revoluce působil jako ředitel Moravské zemské knihovny a dodnes s knihovnou spolupracuje. „Já byl divákem. V knihovně se všechno hýbalo, lidé se scházeli na schůzích. Bylo to bouřlivé. Já byl spíš pozorovatel toho, co se děje, než abych do něčeho zasahoval,“ popisuje překotné dění roku 1989.'
+            ],
+            [
+                'https://www.youtube.com/embed/74eRzJ9wAQg',
                 'Vzpomínky Věry Jelínkové',
                 'Popis osoby',
-                'Věra Jelínková působila v roce 1989 jako ředitelka jedné z částí dnešní Moravské zemské knihovny, a sice Státní vědecké knihovny. Patří mezi pamětníky režimů, které se lámaly právě při sametové revoluci. "Ve většině případů to byla beletrie autorů, kteří buď emigrovali nebo byli obsahově nežádoucí," říká o zakázané literatuře, kterou knihovna archivovala od roku 1973.' ]
+                'Věra Jelínková působila v roce 1989 jako ředitelka jedné z částí dnešní Moravské zemské knihovny, a sice Státní vědecké knihovny. Patří mezi pamětníky režimů, které se lámaly právě při sametové revoluci. "Ve většině případů to byla beletrie autorů, kteří buď emigrovali nebo byli obsahově nežádoucí," říká o zakázané literatuře, kterou knihovna archivovala od roku 1973.'
+            ]
         ];
 
-        $res = $this->files->get_files_by_ID([ 6, 9, 12, 15, 18 ]);
-        if(is_array($res)) {
-            for($i = 0; $i < count($res); $i++) {
-                $img = $res[ $i ];
+        $res = $this->files->get_files_by_ID([6, 9, 12, 15, 18]);
+        if (is_array($res)) {
+            for ($i = 0; $i < count($res); $i++) {
+                $img = $res[$i];
                 $carousel->add_slide([
-                    'class' => (0 == $i) ? [ 'active' ] : NULL,
-                    'img' => [ 'src' => $img['path'], 'alt' => $img['title'] ]
+                    'class' => (0 == $i) ? ['active'] : null,
+                    'img' => ['src' => $img['path'], 'alt' => $img['title']]
                 ]);
             }
         }
@@ -75,22 +87,26 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
                 'year' => '11/1989',
                 'items' => $items = $this->files->get_files_by_dir('files/img/obalky/Rudepravo/'),
                 'cover' => $items[0]
-            ], [
+            ],
+            [
                 'title' => 'Studentské listy',
                 'year' => '1/1990',
                 'items' => $items = $this->files->get_files_by_dir('files/img/obalky/Studentske listy/'),
                 'cover' => $items[0]
-            ], [
+            ],
+            [
                 'title' => 'Tribuna',
                 'year' => '11-12/1990',
                 'items' => $items = $this->files->get_files_by_dir('files/img/obalky/Tribuna/'),
                 'cover' => $items[0]
-            ], [
+            ],
+            [
                 'title' => 'Mladý svět',
                 'year' => '1989',
                 'items' => $items = $this->files->get_files_by_dir('files/img/obalky/Tribuna/'),
                 'cover' => $items[0]
-            ], [
+            ],
+            [
                 'title' => 'Duha',
                 'year' => '1989/90',
                 'items' => $items = $this->files->get_files_by_dir('files/img/obalky/Duha/'),
@@ -98,15 +114,15 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
             ]
         ];
 
-        foreach($periodicals as &$paper) {
+        foreach ($periodicals as &$paper) {
             $items = [];
-            foreach($paper['items'] as $item) {
+            foreach ($paper['items'] as $item) {
                 $items[] = [
                     'href' => $item['path'],
                     'title' => $item['title']
                 ];
             }
-            $paper['path'] = $paper['cover']->path ?? NULL;
+            $paper['path'] = $paper['cover']->path ?? null;
             //encode other image data with JSON
             $paper['items'] = json_encode($items);
         }
@@ -124,4 +140,5 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter {
         $this->template->sources = $sources;
 
     }
+
 }
