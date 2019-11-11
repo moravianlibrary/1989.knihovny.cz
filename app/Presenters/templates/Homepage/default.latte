@@ -32,13 +32,13 @@
     </div>
 {/define}
 {define cardPerson}
-    <div class="card card-person {if $status === 'bad'}card-person-danger{else}card-person-primary{/if}">
-        <div class="row no-gutters">
-            <div class="col-sm-4">
+    <div>
+        <div class="row">
+            <div class="col-sm-5">
                 <img class="card-img img-thumbnail" src="{$item['img']}" alt="Foto {$item['name']}" title="{$item['name']}">
             </div>
-            <div class="col-md-8">
-                <div class="card-body">
+            <div class="col-md-7">
+                <div>
                     <h3 class="card-title mb-0">{$item['name']}</h3>
                     <p class="card-text">
                         {$item['born']|date:'%e.%m.%Y'}{if !empty($item['dead'])} – {$item['dead']|date:'%e. %m. %Y'}{/if}
@@ -82,26 +82,39 @@
         <div class="row people" n:if="count($people) > 0">
             <div class="col-md-12 col-lg-6 person_detail">
                 <div class="ppl good">
-                    <div n:foreach="$people as $person" id="person-good-{$iterator->counter}" class="media {if $iterator->first}active{/if}">
-                        {include cardPerson, item => $person, status => 'good'}
+                    <div class="card card-person card-person-primary">
+                        <div class="card-body">
+                            <div n:foreach="$people as $person" id="person-good-{$iterator->counter}" class="media {if $iterator->first}active{/if}">
+                                {include cardPerson, item => $person, status => 'good'}
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <ul class="ppl-list list-group list-group-horizontal" id="list">
+                                <li n:foreach="$people as $person" class="item list-group-item text-center" style="border: 0;" data-target="person-good-{$iterator->counter}">
+                                    {include cardPersonSmall, item => $person}
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <ul class="ppl-list list-group list-group-horizontal" id="list">
-                        <li n:foreach="$people as $person" class="item list-group-item text-center" style="border: 0;" data-target="person-good-{$iterator->counter}">
-                            {include cardPersonSmall, item => $person}
-                        </li>
-                    </ul>
                 </div>
             </div>
             <div class="col-md-12 col-lg-6 person_detail">
                 <div class="ppl dark">
-                    <div n:foreach="$notgood_ppl as $person" id="person-bad-{$iterator->counter}" class="media {if $iterator->first}active{/if}">
-                        {include cardPerson, item => $person, status => 'bad'}
+
+                    <div class="card card-person card-person-danger">
+                        <div class="card-body">
+                            <div n:foreach="$notgood_ppl as $person" id="person-bad-{$iterator->counter}" class="media {if $iterator->first}active{/if}">
+                                {include cardPerson, item => $person, status => 'bad'}
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <ul class="ppl-list list-group list-group-horizontal" id="list-dark">
+                                <li n:foreach="$notgood_ppl as $person" class="item list-group-item text-center" style="border:0;" data-target="person-bad-{$iterator->counter}">
+                                    {include cardPersonSmall, item => $person}
+                                </li>
+                            </ul>
+                        </div>
                     </div>
-                    <ul class="ppl-list list-group list-group-horizontal" id="list-dark">
-                        <li n:foreach="$notgood_ppl as $person" class="item list-group-item text-center" style="border:0;" data-target="person-bad-{$iterator->counter}">
-                            {include cardPersonSmall, item => $person}
-                        </li>
-                    </ul>
                 </div>
             </div>
         </div>

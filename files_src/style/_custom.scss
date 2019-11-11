@@ -430,14 +430,24 @@ nav.navbar {
       min-height: 430px;
     }
   }
+
+  .list-group-item {
+    background: transparent;
+  }
+
 }
 
 .card.card-person.card-person-primary {
   border-left-color: $blue;
+
+  .card-footer{
+    background: #ffffff;
+  }
 }
 
 .card.card-person.card-person-danger {
   background: #ebebeb;
   border-left-color: $red;
+
 }
 
