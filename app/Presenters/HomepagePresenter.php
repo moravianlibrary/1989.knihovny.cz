@@ -144,6 +144,8 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter
     public function beforeRender()
     {
         parent::beforeRender();
+
+        $this->template->utmCode = 'utm_source=1989-knihovny-cz&utm_medium=portal&utm_campaign=listopad89';
     }
 
 }

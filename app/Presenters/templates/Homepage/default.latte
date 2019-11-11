@@ -1,5 +1,5 @@
 {define cardBook}
-    {var $href = 'https://www.knihovny.cz/Record/' . $item['record']}
+    {var $href = 'https://www.knihovny.cz/Record/' . $item['record'] . '/?' . $utmCode}
     <div class="col-12 col-md-6 col-lg-4">
         <div class="card mb-4 card-book">
             <div class="row no-gutters">
@@ -132,7 +132,7 @@
                 <div class="card card-book-more mb-4 bg-light">
                     <div class="card-body text-center">
                         <p>Další životopisy najdete na</p>
-                        <a target="_blank" class="btn other" href="https://www.knihovny.cz/Search/Results/?type0%5B%5D=AllFields&bool0%5B%5D=AND&filter=JYOwzgDsBOCGAuwD2IBcAiAjATgBzYH0Jol5YBzFYMeAU3SA&daterange=&publishDatefrom=&publishDateto=&limit=10&sort=relevance&page=1&searchTypeTemplate=basic&database=Solr&keepFacetsEnabled=true&join=AND">
+                        <a target="_blank" class="btn other" href="https://www.knihovny.cz/Search/Results/?type0%5B%5D=AllFields&bool0%5B%5D=AND&filter=JYOwzgDsBOCGAuwD2IBcAiAjATgBzYH0Jol5YBzFYMeAU3SA&daterange=&publishDatefrom=&publishDateto=&limit=10&sort=relevance&page=1&searchTypeTemplate=basic&database=Solr&keepFacetsEnabled=true&join=AND&{$utmCode}">
                             <img src="{$basePath}/files/img/logo/logo-knihovny.cz.png" alt="Logo Knihovny.cz">
                         </a>
                     </div>
@@ -230,7 +230,7 @@
                 <div class="card card-book-more mb-4 bg-light">
                     <div class="card-body text-center">
                         <p>Další knihy o událostech najdete na</p>
-                        <a target="_blank" class="btn other" href="https://www.knihovny.cz/Search/Results/?type0%5B%5D=AllFields&bool0%5B%5D=AND&filter=JYOwzgDsBOCGAuwD2IBcAiAbgUwDY_gH1ptMlcBXRFdIA...&daterange=&publishDatefrom=&publishDateto=&limit=10&sort=relevance&page=1&searchTypeTemplate=basic&database=Solr&keepFacetsEnabled=true&join=AND">
+                        <a target="_blank" class="btn other" href="https://www.knihovny.cz/Search/Results/?type0%5B%5D=AllFields&bool0%5B%5D=AND&filter=JYOwzgDsBOCGAuwD2IBcAiAbgUwDY_gH1ptMlcBXRFdIA...&daterange=&publishDatefrom=&publishDateto=&limit=10&sort=relevance&page=1&searchTypeTemplate=basic&database=Solr&keepFacetsEnabled=true&join=AND&{$utmCode}">
                             <img src="{$basePath}/files/img/logo/logo-knihovny.cz.png" alt="Logo Knihovny.cz">
                         </a>
                     </div>
@@ -330,13 +330,13 @@
                 <div class="card">
                     <div class="card-body">
                         <p class="text-center mb-4">
-                            <a href="http://www.knihovny.cz/" target="_blank">
+                            <a href="http://www.knihovny.cz/?{$utmCode}" target="_blank">
                                 <img src="{$basePath}/files/img/logo/logo-knihovny.cz.png" alt="Logo Knihovny.cz">
                             </a>
                         </p>
                         <p>Portál poskytuje jednotný přístup ke službám českých knihoven. Na našem portálu můžete prohledávat katalogy všech zapojených knihoven z jediného vyhledávacího řádku.</p>
                         <p class="text-center">
-                            <a class="btn btn-primary" href="http://www.knihovny.cz/" target="_blank">www.knihovny.cz</a>
+                            <a class="btn btn-primary" href="http://www.knihovny.cz/?{$utmCode}" target="_blank">www.knihovny.cz</a>
                         </p>
                         <hr>
                         <h5>Co tady můžete dělat?</h5>
