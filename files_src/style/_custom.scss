@@ -159,8 +159,8 @@ main {
           margin: 20px;
           text-align: center;
 
-          @include media-breakpoint-up(md){
-            margin:35px;
+          @include media-breakpoint-up(md) {
+            margin: 35px;
           }
 
           img {
@@ -174,10 +174,6 @@ main {
 
   .people {
     .ppl {
-      margin: 0;
-      padding: .5em;
-      border: 1px double #DDD;
-      border-radius: 3px;
 
       .tns-outer {
         button {
@@ -189,98 +185,21 @@ main {
         }
       }
 
-      &.dark {
-        background: black;
-        color: whitesmoke;
-        border: none;
-
-        a {
-          color: orangered;
-
-          &:hover {
-            color: orange;
-          }
-        }
-
-        h6.date {
-          color: #DDD;
-        }
-
-        .media {
-          border-color: #555;
-        }
-      }
-
-      h5.name {
-        margin: 0;
-        border: none;
-      }
-
-      h6.date {
-        font-size: 90%;
-        color: #4C4C4C;
-      }
-
       .media {
-        margin-bottom: .5em;
-        border-bottom: 1px solid gray;
-        min-height: 26em;
         display: none;
 
         &.active {
           display: flex;
         }
 
-        .media-body {
-          padding: .25em .5em;
-
-          p {
-            margin: 0;
-          }
-
-          .title {
-            margin-left: 0.5em;
-
-            .name {
-              font-size: 1.7em;
-            }
-          }
-
-          img.profile {
-            width: 20px;
-            float: left;
-          }
-
-          ul.control {
-            font-size: 110%;
-            list-style-type: none;
-            margin: 5px;
-            padding: 0;
-          }
-        }
       }
 
       ul.ppl-list {
-        list-style-type: none;
-        text-align: center;
-        padding: 0;
-        margin: 0;
-        overflow: hidden;
-        white-space: nowrap;
 
         li.item {
-          display: inline-block;
-          padding: 0 4px;
           user-select: none;
           cursor: pointer;
 
-          img.avatar {
-            width: 80px;
-          }
-
-          .details {
-            margin: 5px 0;
-          }
         }
       }
 
@@ -495,3 +414,30 @@ nav.navbar {
 .fancybox-nav span {
   visibility: visible;
 }
+
+.card.card-person {
+
+  border-left-width: 5px;
+
+  .card-body {
+    @include media-breakpoint-up(xs) {
+    }
+    @include media-breakpoint-up(sm) {
+    }
+    @include media-breakpoint-up(md) {
+    }
+    @include media-breakpoint-up(lg) {
+      min-height: 430px;
+    }
+  }
+}
+
+.card.card-person.card-person-primary {
+  border-left-color: $blue;
+}
+
+.card.card-person.card-person-danger {
+  background: #ebebeb;
+  border-left-color: $red;
+}
+
