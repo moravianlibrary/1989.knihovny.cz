@@ -1,4 +1,4 @@
-{define card_book}
+{define cardBook}
     {var $href = 'https://www.knihovny.cz/Record/' . $item['record']}
     <div class="col-12 col-md-6 col-lg-4">
         <div class="card mb-4 card-book">
@@ -103,7 +103,7 @@
         <h2 class="text-center"><span>Životopisy osobností</span></h2>
         <div class="row">
             {foreach $knihy['ZIVOTOPIS'] as $book}
-                {include card_book, item => $book}
+                {include cardBook, item => $book}
             {/foreach}
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card card-book-more mb-4 bg-light">
