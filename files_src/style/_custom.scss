@@ -34,13 +34,7 @@ header {
   overflow: hidden;
   background: $color-bg-head;
   @include media-breakpoint-up(lg) {
-    height: $height-header;
-  }
-
-  .row.header {
-    @include media-breakpoint-up(lg) {
-      height: $height-header;
-    }
+    min-height: $height-header;
   }
 
   .carousel {
@@ -53,8 +47,7 @@ header {
     .carousel-inner {
       overflow: hidden;
       @include media-breakpoint-up(lg) {
-        height: $height-header;
-        border-radius: 5%/50% 0 0 50%;
+        //border-radius: 5%/50% 0 0 50%;
       }
 
       .carousel-item {
@@ -451,3 +444,7 @@ nav.navbar {
 
 }
 
+
+.media.logo{
+  display: block;
+}
