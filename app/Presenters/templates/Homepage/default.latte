@@ -90,7 +90,7 @@
                         </div>
                         <div class="card-footer">
                             <ul class="ppl-list list-group list-group-horizontal" id="list">
-                                <li n:foreach="$people as $person" class="item list-group-item text-center" style="border: 0;" data-target="person-good-{$iterator->counter}">
+                                <li n:foreach="$people as $person" class="item list-group-item text-center" data-target="person-good-{$iterator->counter}">
                                     {include cardPersonSmall, item => $person}
                                 </li>
                             </ul>
@@ -103,13 +103,13 @@
 
                     <div class="card card-person card-person-danger">
                         <div class="card-body">
-                            <div n:foreach="$notgood_ppl as $person" id="person-bad-{$iterator->counter}" class="media {if $iterator->first}active{/if}">
+                            <div n:foreach="$notgood_ppl as $person" id="person-bad-{$iterator->counter}" class="media{if $iterator->first} active{/if}">
                                 {include cardPerson, item => $person, status => 'bad'}
                             </div>
                         </div>
                         <div class="card-footer">
                             <ul class="ppl-list list-group list-group-horizontal" id="list-dark">
-                                <li n:foreach="$notgood_ppl as $person" class="item list-group-item text-center" style="border:0;" data-target="person-bad-{$iterator->counter}">
+                                <li n:foreach="$notgood_ppl as $person" class="item list-group-item text-center{if $iterator->first} active{/if}" data-target="person-bad-{$iterator->counter}">
                                     {include cardPersonSmall, item => $person}
                                 </li>
                             </ul>
@@ -192,7 +192,7 @@
             </div>
         </div>
         <div>
-            <a class="btn btn-block btn-outline-primary" data-toggle="collapse" href="#collapsePhotogallery" role="button" aria-expanded="false" aria-controls="collapsePhotogallery">
+            <a class="btn btn-block btn-outline-primary" data-toggle="collapse" href="#collapsePhotogallery" role="button" aria-expanded="false" aria-controls="collapsePhotogallery" id="galleryToggle">
                 <i class="fa fa-photo"></i> Zobrazit více fotografií
             </a>
         </div>
