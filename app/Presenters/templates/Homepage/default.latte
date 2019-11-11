@@ -48,11 +48,11 @@
                     </p>
                     <p class="card-text">{$item['desc']}</p>
                     <p>
-                        <a n:if="isset($item['wrote'])" class="btn btn-primary mb-1" target="_blank" href="{$item['wrote']}">
+                        <a n:if="isset($item['wrote'])" class="btn btn-primary mb-1" target="_blank" href="{$item['wrote']}&{$utmCode}">
                             <i class="fa fa-fw fa-pencil"></i>
                             Jsem autorem
                         </a>
-                        <a n:if="isset($item['theywrote'])" class="btn btn-primary mb-1" target="_blank" href="{$item['theywrote']}">
+                        <a n:if="isset($item['theywrote'])" class="btn btn-primary mb-1" target="_blank" href="{$item['theywrote']}&{$utmCode}">
                             <i class="fa fa-fw fa-book"></i>
                             Napsali o mně
                         </a>
