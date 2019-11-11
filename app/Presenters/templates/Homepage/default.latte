@@ -1,4 +1,4 @@
-{define card_book}
+{define cardBook}
     {var $href = 'https://www.knihovny.cz/Record/' . $item['record']}
     <div class="col-12 col-md-6 col-lg-4">
         <div class="card mb-4 card-book">
@@ -31,6 +31,48 @@
         </div>
     </div>
 {/define}
+{define cardPerson}
+    <div class="card card-person {if $status === 'bad'}card-person-danger{else}card-person-primary{/if}">
+        <div class="row no-gutters">
+            <div class="col-sm-4">
+                <img class="card-img img-thumbnail" src="{$item['img']}" alt="Foto {$item['name']}" title="{$item['name']}">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h3 class="card-title mb-0">{$item['name']}</h3>
+                    <p class="card-text">
+                        {$item['born']|date:'%e.%m.%Y'}{if !empty($item['dead'])} – {$item['dead']|date:'%e. %m. %Y'}{/if}
+                    </p>
+                    <p class="card-text">
+                        <strong>{$item['job']}</strong>
+                    </p>
+                    <p class="card-text">{$item['desc']}</p>
+                    <p>
+                        <a n:if="isset($item['wrote'])" class="btn btn-primary mb-1" target="_blank" href="{$item['wrote']}">
+                            <i class="fa fa-fw fa-pencil"></i>
+                            Jsem autorem
+                        </a>
+                        <a n:if="isset($item['theywrote'])" class="btn btn-primary mb-1" target="_blank" href="{$item['theywrote']}">
+                            <i class="fa fa-fw fa-book"></i>
+                            Napsali o mně
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+{/define}
+{define cardPersonSmall}
+    <div>
+        <img class="img-fluid img-thumbnail" src="{$item['img']}" style="max-height: 100px;">
+        <div class="details">
+            <h4 class="m-0" style="font-size: 1em;">{$item['name']}</h4>
+            <p class="text-muted">
+                {$item['born']|date:'%Y'}{if !empty($item['dead'])}–{$item['dead']|date:'%Y'}{/if}
+            </p>
+        </div>
+    </div>
+{/define}
 
 {block content}
 
@@ -38,58 +80,26 @@
     <div class="container">
         <h2 class="text-center"><span>Osobnosti revoluce</span></h2>
         <div class="row people" n:if="count($people) > 0">
-            <div class="col-sm-12 col-md-6 person_detail">
+            <div class="col-md-12 col-lg-6 person_detail">
                 <div class="ppl good">
                     <div n:foreach="$people as $person" id="person-good-{$iterator->counter}" class="media {if $iterator->first}active{/if}">
-                        <img class="profile" src="{$person['img']}" alt="Osoba">
-                        <div class="media-body">
-                            <div class="title">
-                                <h5 class="name">{$person['name']}</h5>
-                                <h6 class="date">{$person['born']|date:'%e. %m. %Y'}{if !empty($person['dead'])} - {$person['dead']|date:'%e. %m. %Y'}{/if}, {$person['job']}</h6>
-                            </div>
-                            <p>{$person['desc']}
-                            <ul class="control">
-                                <li n:if="isset($person['wrote'])"><a target="_blank" href="{$person['wrote']}">Jsem autorem</a></li>
-                                <li n:if="isset($person['theywrote'])"><a target="_blank" href="{$person['theywrote']}">Napsali o mně</a></li>
-                            </ul>
-                            </p>
-                        </div>
+                        {include cardPerson, item => $person, status => 'good'}
                     </div>
-                    <ul class="ppl-list" id="list">
-                        <li n:foreach="$people as $person" class="item" data-target="person-good-{$iterator->counter}">
-                            <img class="avatar" src="{$person['img']}">
-                            <div class="details">
-                                <h5 class="name">{$person['name']}</h5>
-                                <h6 class="date">{$person['born']|date:'%Y'}{if !empty($person['dead'])} - {$person['dead']|date:'%Y'}{/if}</h6>
-                            </div>
+                    <ul class="ppl-list list-group list-group-horizontal" id="list">
+                        <li n:foreach="$people as $person" class="item list-group-item text-center" style="border: 0;" data-target="person-good-{$iterator->counter}">
+                            {include cardPersonSmall, item => $person}
                         </li>
                     </ul>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 person_detail">
+            <div class="col-md-12 col-lg-6 person_detail">
                 <div class="ppl dark">
                     <div n:foreach="$notgood_ppl as $person" id="person-bad-{$iterator->counter}" class="media {if $iterator->first}active{/if}">
-                        <img class="profile" src="{$person['img']}" alt="Osoba">
-                        <div class="media-body">
-                            <div class="title">
-                                <h5 class="name">{$person['name']}</h5>
-                                <h6 class="date">{$person['born']|date:'%e. %m. %Y'}{if !empty($person['dead'])} - {$person['dead']|date:'%e. %m. %Y'}{/if}, {$person['job']}</h6>
-                            </div>
-                            <p>{$person['desc']}
-                            <ul class="control">
-                                <li n:if="isset($person['wrote'])"><a target="_blank" href="{$person['wrote']}">Jsem autorem</a></li>
-                                <li n:if="isset($person['theywrote'])"><a target="_blank" href="{$person['theywrote']}">Napsali o mně</a></li>
-                            </ul>
-                            </p>
-                        </div>
+                        {include cardPerson, item => $person, status => 'bad'}
                     </div>
-                    <ul class="ppl-list" id="list-dark">
-                        <li n:foreach="$notgood_ppl as $person" class="item" data-target="person-bad-{$iterator->counter}">
-                            <img class="avatar" src="{$person['img']}">
-                            <div class="details">
-                                <h5 class="name">{$person['name']}</h5>
-                                <h6 class="date">{$person['born']|date:'%Y'}{if !empty($person['dead'])} - {$person['dead']|date:'%Y'}{/if}</h6>
-                            </div>
+                    <ul class="ppl-list list-group list-group-horizontal" id="list-dark">
+                        <li n:foreach="$notgood_ppl as $person" class="item list-group-item text-center" style="border:0;" data-target="person-bad-{$iterator->counter}">
+                            {include cardPersonSmall, item => $person}
                         </li>
                     </ul>
                 </div>
@@ -103,7 +113,7 @@
         <h2 class="text-center"><span>Životopisy osobností</span></h2>
         <div class="row">
             {foreach $knihy['ZIVOTOPIS'] as $book}
-                {include card_book, item => $book}
+                {include cardBook, item => $book}
             {/foreach}
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card card-book-more mb-4 bg-light">
@@ -176,12 +186,32 @@
     </div>
 </section>
 
+<section id="zaslani-souboru">
+    <div class="container text-center">
+        <h2><span>Vaše soubory</span></h2>
+        <div class="row">
+            <div class="col-lg-10 offset-lg-1">
+                <div class="mb-5">
+                    <p>
+                        Chcete se podělit o své zážitky z revoluce? Vlastníte nějaké fotografie nebo videa? Rádi byste je zveřejnili? Nahrajte je na náš prostřednictvím tohoto formuláře a my z těch nejlepších uděláme elektronickou výstavu.
+                    </p>
+                    <p><span class="text-muted">Pokud máte obsahu více a jeho nahrání převyšuje kapacitu pro vložení nebo máte výhrady k licenci, pak nás můžete oslovit prostřednicvím e-mailu <a href="mailto:vzpominky@mzk.cz">vzpominky@mzk.cz</a>.</span></p>
+                    </p>
+                </div>
+                <div class="container text-center">
+                    <a class="btn btn-lg btn-primary" href="https://forms.gle/9ZMufz1pUPynWDnC6" target="_blank">Zaslat soubory</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="knihy">
     <div class="container">
         <h2 class="text-center"><span>Knihy o revoluci</span></h2>
         <div class="row">
             {foreach $knihy['REVOLUCE'] as $book}
-                {include card_book, item => $book}
+                {include cardBook, item => $book}
             {/foreach}
             <div class="col-12 col-md-6 col-lg-4">
                 <div class="card card-book-more mb-4 bg-light">
@@ -279,29 +309,9 @@
     </div>
 </section>
 
-<section id="zaslani-souboru">
-    <div class="container text-center">
-        <h2><span>Vaše soubory</span></h2>
-        <div class="row">
-            <div class="col-lg-10 offset-lg-1">
-                <div class="mb-5">
-                    <p>
-                        Chcete se podělit o své zážitky z revoluce? Vlastníte nějaké fotografie nebo videa? Rádi byste je zveřejnili? Nahrajte je na náš prostřednictvím tohoto formuláře a my z těch nejlepších uděláme elektronickou výstavu.
-                    </p>
-                    <p><span class="text-muted">Pokud máte obsahu více a jeho nahrání převyšuje kapacitu pro vložení nebo máte výhrady k licenci, pak nás můžete oslovit prostřednicvím e-mailu <a href="mailto:vzpominky@mzk.cz">vzpominky@mzk.cz</a>.</span></p>
-                    </p>
-                </div>
-                <div class="container text-center">
-                    <a class="btn btn-lg btn-primary" href="https://forms.gle/9ZMufz1pUPynWDnC6" target="_blank">Zaslat soubory</a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
 <section id="fondy">
     <div class="container">
-        <h2 class="text-center"><span>Jak pracovat s fondy</span></h2>
+        <h2 class="text-center"><span>Jak pracovat s&nbsp;fondy</span></h2>
         <div class="row">
             <div class="col-12 col-lg-6">
                 <div class="card">
@@ -353,9 +363,15 @@
                             <li>lze kontaktovat nejbližší knihovnu a nechat si dokument objednat fyzicky u&nbsp;ní</li>
                             <li>lze také požádat o papírovou kopii digitálního dokumentu v Národní knihovně ČR, pokud mají stejný dokument ve vlastní digitální knihovně, kopie si můžete objednat na svou adresu
                                 <ul>
-                                    <li>vyhledat dokument</li>
-                                    <li>podmínky a ceník</li>
-                                    <li>objednávkový formulář</li>
+                                    <li>
+                                        <a href="http://www.digitalniknihovna.cz/nkp" target="_blank">vyhledat dokument</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.nkp.cz/sluzby/chci-sluzbu/ziskat-kopii" target="_blank">podmínky a ceník</a>
+                                    </li>
+                                    <li>
+                                        <a href="https://www.nkp.cz/sluzby/formulare/kramerius-objednavka" target="_blank">objednávkový formulář</a>
+                                    </li>
                                 </ul>
                             </li>
                         </ul>
