@@ -50,6 +50,48 @@ header {
     }
   }
 
+  @include media-breakpoint-down(sm) {
+    .media.logo {
+      display: block;
+      text-align: center;
+
+      img {
+        width: 150px;
+      }
+    }
+  }
+  @include media-breakpoint-only(md) {
+    .media.logo {
+      display: block;
+      text-align: left;
+
+      img {
+        width: 150px;
+      }
+    }
+  }
+
+  @include media-breakpoint-only(lg) {
+    .media.logo {
+      display: block;
+      text-align: left;
+
+      img {
+        width: 150px;
+      }
+    }
+  }
+
+  @include media-breakpoint-up(xl) {
+    .media.logo {
+      text-align: left;
+
+      img {
+        width: 150px;
+      }
+    }
+  }
+
 }
 
 main {
@@ -424,7 +466,3 @@ nav.navbar {
 
 }
 
-
-.media.logo {
-  display: block;
-}
