@@ -50,11 +50,19 @@
                     <p>
                         <a n:if="isset($item['wrote'])" class="btn btn-primary mb-1" target="_blank" href="{$item['wrote']}&{$utmCode}">
                             <i class="fa fa-fw fa-pencil"></i>
-                            Jsem autorem
+                            {if $item->gender == 'female'}
+                                Je autorkou
+                            {else}
+                                Je autorem
+                            {/if}
                         </a>
                         <a n:if="isset($item['theywrote'])" class="btn btn-primary mb-1" target="_blank" href="{$item['theywrote']}&{$utmCode}">
                             <i class="fa fa-fw fa-book"></i>
-                            Napsali o mně
+                            {if $item->gender == 'female'}
+                                Napsali o ní
+                            {else}
+                                Napsali o něm
+                            {/if}
                         </a>
                     </p>
                 </div>
