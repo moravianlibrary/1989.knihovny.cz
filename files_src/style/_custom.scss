@@ -31,43 +31,23 @@ h1.display-1 {
 }
 
 header {
-  overflow: hidden;
-  background: $color-bg-head;
-  @include media-breakpoint-up(lg) {
-    min-height: $height-header;
-  }
+  color: white;
+  background-color: black;
+  background-image: url("/files/img/foto/SVKvDobeStavky/a0028.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
 
-  .carousel {
-    padding: 0;
-    @include media-breakpoint-up(lg) {
-      position: absolute;
-      right: 0;
+  .header-text {
+    color: #000000;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 2rem;
+
+    @include media-breakpoint-up(md) {
+      clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+      -webkit-clip-path: polygon(0 0, 100% 0, 90% 100%, 0 100%);
+      padding-right: 8%;
     }
-
-    .carousel-inner {
-      overflow: hidden;
-      @include media-breakpoint-up(lg) {
-        //border-radius: 5%/50% 0 0 50%;
-      }
-
-      .carousel-item {
-        &.active {
-
-        }
-
-        img {
-          @include media-breakpoint-up(lg) {
-            min-height: $height-header;
-          }
-          width: 100%;
-        }
-      }
-    }
-  }
-
-  .header-inner {
-    padding-left: 2rem;
-    padding-bottom: 3rem;
   }
 
 }
@@ -433,7 +413,7 @@ nav.navbar {
 .card.card-person.card-person-primary {
   border-left-color: $blue;
 
-  .card-footer{
+  .card-footer {
     background: #ffffff;
   }
 }
@@ -445,6 +425,6 @@ nav.navbar {
 }
 
 
-.media.logo{
+.media.logo {
   display: block;
 }
