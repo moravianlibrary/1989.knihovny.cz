@@ -185,7 +185,7 @@
         <div class="row text-center">
             <div n:foreach="$photo as $pic" class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 mb-3" style="max-height: 180px;">
                 {breakIf $iterator->counter > 8}
-                <a rel="photogallery" class="fancybox d-block h-100 border p-1 bg-white" href="{$pic['path']}">
+                <a rel="photogallery" class="fancybox d-block h-100 border p-1 bg-white" href="{$pic['path']}" title="Foto: archív MZK">
                     <img class="img-fluid h-100" src="{$pic['path']}" title="{$pic['title']}">
                 </a>
             </div>
