@@ -93,7 +93,7 @@
                     <div class="card card-person card-person-primary">
                         <div class="card-body">
                             <div n:foreach="$people as $person" id="person-good-{$iterator->counter}" class="media {if $iterator->first}active{/if}">
-                                {include cardPerson, item => $person, status => 'good'}
+                                {include cardPerson, item => $person}
                             </div>
                         </div>
                         <div class="card-footer">
@@ -112,7 +112,7 @@
                     <div class="card card-person card-person-danger">
                         <div class="card-body">
                             <div n:foreach="$notgood_ppl as $person" id="person-bad-{$iterator->counter}" class="media {if $iterator->first}active{/if}">
-                                {include cardPerson, item => $person, status => 'bad'}
+                                {include cardPerson, item => $person}
                             </div>
                         </div>
                         <div class="card-footer">
