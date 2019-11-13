@@ -214,7 +214,17 @@ main {
         li.item {
           user-select: none;
           cursor: pointer;
+          transition: background 0.25s ease-in-out;
+          border: 1px solid transparent;
 
+          &.active {
+            border: 1px solid lightgray;
+            color: black;
+          }
+
+          &:hover {
+            background: #f0eded;
+          }
         }
       }
 
