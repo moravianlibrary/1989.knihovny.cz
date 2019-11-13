@@ -83,7 +83,7 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter
 
         $periodicals = [
             [
-                'title' => 'Rudé právo.',
+                'title' => 'Rudé právo',
                 'year' => '11/1989',
                 'items' => $items = $this->files->get_files_by_dir('files/img/obalky/Rudepravo/'),
                 'cover' => $items[0]
