@@ -8,8 +8,6 @@ var config = {
     "speed": 400,
     "autoplay": true,
 };
-tns(config);
-
 $.fn.pplSlider = function (e) {
     $(this).each(function () {
         var that = $(this);
@@ -34,8 +32,13 @@ $.fn.pplSlider = function (e) {
 jQuery(document).ready(function () {
 
     var disableRightClick = function (e) {
+        alert("Tento obrázek je chráněn autorskými právy. Prosím nestahujte si jej a využijte jiné zdroje.");
         e.preventDefault();
     };
+
+    $('.fancybox-skin').ready(function(){
+        $(this).contextmenu(disableRightClick);
+    });
 
     $('.ppl.good, .ppl.dark').pplSlider();
 
