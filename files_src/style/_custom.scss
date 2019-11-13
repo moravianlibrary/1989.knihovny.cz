@@ -299,11 +299,7 @@ main {
     .item {
 
       &:hover {
-        color: gray;
-
-        img {
-          filter: blur(2px);
-        }
+        color: #08437f;
       }
 
       .cover {
