@@ -103,7 +103,7 @@ final class HomepagePresenter extends Nette\Application\UI\Presenter
             [
                 'title' => 'Mladý svět',
                 'year' => '1989',
-                'items' => $items = $this->files->get_files_by_dir('files/img/obalky/Tribuna/'),
+                'items' => $items = $this->files->get_files_by_dir('files/img/obalky/Mlady_svet/'),
                 'cover' => $items[0]
             ],
             [
