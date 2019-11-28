@@ -168,18 +168,9 @@
     <div class="container">
         <h2 class="text-center"><span>Naše vzpomínky</span></h2>
         <div class="row">
-            <div class="col-md-6 col-lg-6">
-                <div class="card">
-                    <iframe class="card-img-top" style="height: 300px;" src="{$videos[0][0]}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-                    <div class="card-body">
-                        <h3>{$videos[0][1]}</h3>
-                        <p>{$videos[0][3]}</p>
-                    </div>
-                </div>
-            </div>
-            {foreach [$videos[1], $videos[2]] as $video}
-                <div class="col-md-6 col-lg-3">
-                    <div class="card">
+            {foreach $videos as $video}
+                <div class="col-xs-12 col-md-6 col-lg-3">
+                    <div class="card mb-3">
                         <iframe class="card-img-top" src="{$video[0]}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                         <div class="card-body">
                             <h3>{$video[1]}</h3>
@@ -188,6 +179,19 @@
                     </div>
                 </div>
             {/foreach}
+            <div class="col-xs-12 col-md-6 col-lg-3">
+                <div class="card">
+                    <a href="{$basePath}/files/knihovna-v-chebu-pred-30-lety.pdf" title="O sametu v chebské knihovně" target="_blank">
+                        <img class="card-img-top" src="{$basePath}/files/img/samet-cheb.jpg" alt="O sametu v chebské knihovně" title="O sametu v chebské knihovně">
+                    </a>
+                    <div class="card-body">
+                        <h3>O sametu v&nbsp;chebské knihovně</h3>
+                        <p>Rozhovor s pamětnicemi atmosféry před třiceti lety v Chebu - Mgr. Marii Mudrovou (vlevo), která v chebské knihovně pracuje od roku 1970, a Ivonou Lesákovou, jež nastoupila v roce 1988.</p>
+                        <p>Příspěvek do portálu Knihovny.cz k průběhu 17. listopadu v 1989 českých knihovnách.</p>
+                        <p><a href="{$basePath}/files/knihovna-v-chebu-pred-30-lety.pdf" title="O sametu v chebské knihovně" target="_blank">Zobrazit v PDF</a></p>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </section>
